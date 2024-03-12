@@ -228,7 +228,7 @@ public class Extractor {
         List<ExtractedResult> best = extractWithoutOrder(query, choices, func);
 
         List<ExtractedResult> results = (List<ExtractedResult>) Utils.findTopKHeap(best, numChoices);
-        Collections.reverse(results);
+        results = (List<ExtractedResult>) Collections.reverse(results);
 
         return results;
     }
@@ -237,7 +237,7 @@ public class Extractor {
         List<ExtractedResult> best = extractWithoutOrder(query, choices, func);
 
         List<ExtractedResult> results = (List<ExtractedResult>) Utils.findTopKHeap(best, numChoices);
-        Collections.reverse(results);
+        results = (List<ExtractedResult>) Collections.reverse(results);
 
         return results;
     }
@@ -259,7 +259,7 @@ public class Extractor {
         List<BoundExtractedResult> best = extractWithoutOrder(query, choices, toStringFunction, func);
 
         List<BoundExtractedResult> results = (List<BoundExtractedResult>) Utils.findTopKHeap(best, numChoices);
-        Collections.reverse(results);
+        results = (List<BoundExtractedResult>) Collections.reverse(results);
 
         return results;
     }
@@ -270,7 +270,7 @@ public class Extractor {
         List<BoundExtractedResult> best = extractWithoutOrder(query, choices, toStringFunction, func);
 
         List<BoundExtractedResult> results = (List<BoundExtractedResult>) Utils.findTopKHeap(best, numChoices);
-        Collections.reverse(results);
+        results = (List<BoundExtractedResult>) Collections.reverse(results);
 
         return results;
     }

@@ -1,7 +1,6 @@
 public class TokenSort extends RatioAlgorithm {
 
-    @Override
-    public int apply(String s1, String s2, Ratio ratio, ToStringFunction<String> stringFunction) {
+    public override Integer apply(String s1, String s2, Ratio ratio, ToStringFunction stringFunction) {
 
         String sorted1 = processAndSort(s1, stringFunction);
         String sorted2 = processAndSort(s2, stringFunction);
@@ -10,12 +9,12 @@ public class TokenSort extends RatioAlgorithm {
 
     }
 
-    private static String processAndSort(String in, ToStringFunction<String> stringProcessor) {
+    private static String processAndSort(String input, ToStringFunction stringProcessor) {
 
-        in = stringProcessor.apply(in);
-        String[] wordsArray = in.split('\\s+');
+        input = stringProcessor.apply(input);
+        String[] wordsArray = input.split('\\s+');
 
-        List<String> words = Arrays.asList(wordsArray);
+        List<String> words = new List<String>(wordsArray);
         String joined = Utils.sortAndJoin(words, ' ');
 
         return joined.trim();

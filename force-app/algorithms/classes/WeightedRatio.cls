@@ -19,7 +19,7 @@ public class WeightedRatio extends BasicAlgorithm {
         Double unbaseScale = UNBASE_SCALE;
         Double partialScale = PARTIAL_SCALE;
 
-        Integer base = ratio(s1, s2);
+        Integer base = FuzzySearch.ratio(s1, s2);
         Double lenRatio = ((Double) Math.max(len1, len2)) / Math.min(len1, len2);
 
         // if strings are similar length don't use partials
@@ -30,18 +30,18 @@ public class WeightedRatio extends BasicAlgorithm {
 
         if (tryPartials) {
 
-            Double partial = partialRatio(s1, s2) * partialScale;
-            Double partialSor = tokenSortPartialRatio(s1, s2) * unbaseScale * partialScale;
-            Double partialSet = tokenSetPartialRatio(s1, s2) * unbaseScale * partialScale;
+            Double partial = FuzzySearch.partialRatio(s1, s2) * partialScale;
+            Double partialSor = FuzzySearch.tokenSortPartialRatio(s1, s2) * unbaseScale * partialScale;
+            Double partialSet = FuzzySearch.tokenSetPartialRatio(s1, s2) * unbaseScale * partialScale;
 
-            return (Integer) round(PrimitiveUtils.max(base, partial, partialSor, partialSet));
+            return (Integer) Math.round(PrimitiveUtils.max(new List<Double>{base, partial, partialSor, partialSet}));
 
         } else {
 
-            Double tokenSort = tokenSortRatio(s1, s2) * unbaseScale;
-            Double tokenSet = tokenSetRatio(s1, s2) * unbaseScale;
+            Double tokenSort = FuzzySearch.tokenSortRatio(s1, s2) * unbaseScale;
+            Double tokenSet = FuzzySearch.tokenSetRatio(s1, s2) * unbaseScale;
 
-            return (Integer) round(PrimitiveUtils.max(base, tokenSort, tokenSet));
+            return (Integer) Math.round(PrimitiveUtils.max(new List<Double>{base, tokenSort, tokenSet}));
 
         }
 

@@ -10,8 +10,7 @@ public class PartialRatio implements Ratio {
      * @param s2 Input string
      * @return The partial ratio
      */
-    @Override
-    public int apply(String s1, String s2) {
+    public Integer apply(String s1, String s2) {
 
         String shorter;
         String longer;
@@ -30,14 +29,14 @@ public class PartialRatio implements Ratio {
 
         MatchingBlock[] matchingBlocks = DiffUtils.getMatchingBlocks(shorter, longer);
 
-        List<Double> scores = new ArrayList<>();
+        List<Double> scores = new List<Double>();
 
         for (MatchingBlock mb : matchingBlocks) {
 
-            int dist = mb.dpos - mb.spos;
+            Integer dist = mb.dpos - mb.spos;
 
-            int long_start = dist > 0 ? dist : 0;
-            int long_end = long_start + shorter.length();
+            Integer long_start = dist > 0 ? dist : 0;
+            Integer long_end = long_start + shorter.length();
 
             if(long_end > longer.length()) long_end = longer.length();
 
@@ -53,12 +52,11 @@ public class PartialRatio implements Ratio {
 
         }
 
-        return (int) Math.round(100 * Collections.max(scores));
+        return (Integer) Math.round(100 * Collections.max(scores));
 
     }
 
-    @Override
-    public int apply(String s1, String s2, ToStringFunction<String> sp) {
+    public Integer apply(String s1, String s2, ToStringFunction sp) {
         return apply(sp.apply(s1), sp.apply(s2));
     }
 

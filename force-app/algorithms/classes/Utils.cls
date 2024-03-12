@@ -7,13 +7,13 @@ public class Utils {
 
     }
 
-    static Set<String> tokenizeSet(String input){
+    public static Set<String> tokenizeSet(String input){
 
         return new Set<String>(tokenize(input));
 
     }
 
-    static String sortAndJoin(List<String> col, String sep){
+    public static String sortAndJoin(List<String> col, String sep){
 
         col.sort();
 
@@ -21,7 +21,7 @@ public class Utils {
 
     }
 
-    static String sortAndJoin(Set<String> col, String sep){
+    public static String sortAndJoin(Set<String> col, String sep){
 
         return sortAndJoin(new List<String>(col), sep);
 
