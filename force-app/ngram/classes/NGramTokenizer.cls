@@ -1,47 +1,33 @@
-package org.apache.lucene.analysis.ngram;
-
 /*
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
  * this work for additional information regarding copyright ownership.
  * The ASF licenses this file to You under the Apache License, Version 2.0
- * (the "License"); you may not use this file except in compliance with
+ * (the 'License'); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
+ * distributed under the License is distributed on an 'AS IS' BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import java.io.IOException;
-import java.io.Reader;
-
-import org.apache.lucene.analysis.Tokenizer;
-import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
-import org.apache.lucene.analysis.tokenattributes.OffsetAttribute;
-import org.apache.lucene.analysis.tokenattributes.PositionIncrementAttribute;
-import org.apache.lucene.analysis.tokenattributes.PositionLengthAttribute;
-import org.apache.lucene.analysis.util.CharacterUtils;
-import org.apache.lucene.util.AttributeFactory;
-import org.apache.lucene.util.Version;
 
 /**
  * Tokenizes the input into n-grams of the given size(s).
  * <p>On the contrary to {@link NGramTokenFilter}, this class sets offsets so
  * that characters between startOffset and endOffset in the original stream are
  * the same as the term chars.
- * <p>For example, "abcde" would be tokenized as (minGram=2, maxGram=3):
+ * <p>For example, 'abcde' would be tokenized as (minGram=2, maxGram=3):
  * <table>
  * <tr><th>Term</th><td>ab</td><td>abc</td><td>bc</td><td>bcd</td><td>cd</td><td>cde</td><td>de</td></tr>
  * <tr><th>Position increment</th><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
  * <tr><th>Position length</th><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
  * <tr><th>Offsets</th><td>[0,2[</td><td>[0,3[</td><td>[1,3[</td><td>[1,4[</td><td>[2,4[</td><td>[2,5[</td><td>[3,5[</td></tr>
  * </table>
- * <a name="version"/>
+ * <a name='version'/>
  * <p>This tokenizer changed a lot in Lucene 4.4 in order to:<ul>
  * <li>tokenize in a streaming fashion to support streams which are larger
  * than 1024 chars (limit of the previous version),
@@ -53,7 +39,7 @@ import org.apache.lucene.util.Version;
  * tokens in a different order, tokens are now emitted by increasing start
  * offsets while they used to be emitted by increasing lengths (which prevented
  * from supporting large input streams).
- * <p>Although <b style="color:red">highly</b> discouraged, it is still possible
+ * <p>Although <b style='color:red'>highly</b> discouraged, it is still possible
  * to use the old behavior through {@link Lucene43NGramTokenizer}.
  */
 // non-final to allow for overriding isTokenChar, but all other methods should be final
@@ -135,16 +121,16 @@ public class NGramTokenizer extends Tokenizer {
 
   private void init(Version version, int minGram, int maxGram, boolean edgesOnly) {
     if (!version.onOrAfter(Version.LUCENE_4_4_0)) {
-      throw new IllegalArgumentException("This class only works with Lucene 4.4+. To emulate the old (broken) behavior of NGramTokenizer, use Lucene43NGramTokenizer/Lucene43EdgeNGramTokenizer");
+      throw new IllegalArgumentException('This class only works with Lucene 4.4+. To emulate the old (broken) behavior of NGramTokenizer, use Lucene43NGramTokenizer/Lucene43EdgeNGramTokenizer');
     }
     charUtils = version.onOrAfter(Version.LUCENE_4_4_0)
         ? CharacterUtils.getInstance(version)
         : CharacterUtils.getJava4Instance();
     if (minGram < 1) {
-      throw new IllegalArgumentException("minGram must be greater than zero");
+      throw new IllegalArgumentException('minGram must be greater than zero');
     }
     if (minGram > maxGram) {
-      throw new IllegalArgumentException("minGram must not be greater than maxGram");
+      throw new IllegalArgumentException('minGram must not be greater than maxGram');
     }
     this.minGram = minGram;
     this.maxGram = maxGram;

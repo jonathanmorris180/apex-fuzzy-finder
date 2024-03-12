@@ -1,8 +1,3 @@
-package com.intuit.fuzzymatcher.domain;
-
-import java.util.Comparator;
-import java.util.Objects;
-
 /**
  * Elements are broken down into Token class using the TokenizerFunction
  */
@@ -26,7 +21,7 @@ public class Token<T> {
 
     @Override
     public String toString() {
-        return "{" +
+        return '{' +
                 value +
                 '}';
     }

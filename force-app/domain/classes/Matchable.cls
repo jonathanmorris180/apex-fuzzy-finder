@@ -1,8 +1,3 @@
-package com.intuit.fuzzymatcher.domain;
-
-import java.util.List;
-import java.util.function.BiFunction;
-
 /**
  *
  * Interface implemented by Document, Element and Token to enable matching and scoring these objects

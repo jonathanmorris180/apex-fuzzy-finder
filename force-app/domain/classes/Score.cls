@@ -1,5 +1,3 @@
-package com.intuit.fuzzymatcher.domain;
-
 /**
  * This holds the result of matching 2 Documents, Elements or Tokens.
  * This also holds the reference of the Match object, used to aggregate score with the ScoringFunction.
@@ -25,9 +23,9 @@ public class Score {
 
     @Override
     public String toString() {
-        return "Score{" +
-                "result=" + result +
-                ", match=" + match +
+        return 'Score{' +
+                'result=' + result +
+                ', match=' + match +
                 '}';
     }
 }

@@ -1,13 +1,3 @@
-package com.intuit.fuzzymatcher.component;
-
-import com.intuit.fuzzymatcher.domain.Document;
-import com.intuit.fuzzymatcher.domain.Match;
-import org.apache.commons.collections4.CollectionUtils;
-
-import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 /**
  * Entry Point for Fuzzy Matching. This class provides different ways to accept Documents for primarily 3 use case
  * <p>

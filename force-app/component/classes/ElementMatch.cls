@@ -1,12 +1,3 @@
-package com.intuit.fuzzymatcher.component;
-
-import com.intuit.fuzzymatcher.domain.Element;
-import com.intuit.fuzzymatcher.domain.Match;
-import com.intuit.fuzzymatcher.domain.Token;
-import org.apache.commons.lang3.BooleanUtils;
-
-import java.util.*;
-
 public class ElementMatch {
 
     private final TokenRepo tokenRepo;
@@ -16,8 +7,8 @@ public class ElementMatch {
     }
 
     public Set<Match<Element>> matchElement(Element element) {
-        Set<Match<Element>> matchElements = new HashSet<>();
-        Map<Element, Integer> elementTokenScore = new HashMap<>();
+        Set<Match<Element>> matchElements = new Set<Match<Element>>();
+        Map<Element, Integer> elementTokenScore = new Set<Match<Element>>();
 
         List<Token> tokens = element.getTokens();
         tokens.stream()

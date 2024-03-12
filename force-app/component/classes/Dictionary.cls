@@ -1,15 +1,3 @@
-package com.intuit.fuzzymatcher.component;
-
-import com.intuit.fuzzymatcher.exception.MatchException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Map;
-import java.util.stream.Collectors;
-
 /**
  * Used for Pre-Processing, the Dictionary caches a pre-defined normalization and replacement for common characters
  * found in names and adresses.
@@ -17,39 +5,56 @@ import java.util.stream.Collectors;
  */
 public class Dictionary {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(Dictionary.class);
-    public static final Map<String, String> addressDictionary = getAddressDictionary();
-
-    public static final Map<String, String> nameDictionary = getNameDictionary();
-
-
-    private static Map<String, String>  getAddressDictionary() {
-        try {
-            ClassLoader classLoader = Dictionary.class.getClassLoader();
-            BufferedReader br = new BufferedReader(new InputStreamReader(classLoader.getResourceAsStream("address-dictionary.txt")));
-            return getDictionary(br);
-        } catch (IOException e) {
-            LOGGER.error("could not load address dictonary", e);
-            throw new MatchException("could not load address dictonary", e);
-        }
+  private static final Logger LOGGER = LoggerFactory.getLogger(Dictionary.class);
+  public static final Map<String, String> addressDictionary = getAddressDictionary();
+  public static final Map<String, String> nameDictionary = getNameDictionary();
+  private static final String ADDRESS_DICTIONARY {
+    get {
+      if (ADDRESS_DICTIONARY == null) {
+        ADDRESS_DICTIONARY = getResource('addressdictionary');
+      }
+      return ADDRESS_DICTIONARY;
     }
-
-    private static Map<String, String> getNameDictionary() {
-        try {
-            ClassLoader classLoader = Dictionary.class.getClassLoader();
-            BufferedReader br = new BufferedReader(new InputStreamReader(classLoader.getResourceAsStream("name-dictionary.txt")));
-            return getDictionary(br);
-        } catch (IOException e) {
-            LOGGER.error("could not load name dictonary", e);
-            throw new MatchException("could not load name dictonary", e);
-        }
+  }
+  private static final String NAME_DICTIONARY {
+    get {
+      if (NAME_DICTIONARY == null) {
+        NAME_DICTIONARY = getResource('namedictionary');
+      }
+      return NAME_DICTIONARY;
     }
+  }
 
-    private static Map<String, String> getDictionary(BufferedReader br) throws IOException {
-            return br
-                    .lines()
-                    .map(String::toLowerCase)
-                    .map(s -> s.split(":", 2))
-                    .collect(Collectors.toMap(arr -> arr[0].trim(), arr -> arr[1].trim(), (a1, a2) -> a1));
+  private static String getResource(String resource) {
+    try {
+      StaticResource resource = [
+        SELECT Id, Body
+        FROM StaticResource
+        WHERE Name = :resource
+      ];
+      return resource.Body.toString();
+    } catch (Exception e) {
+      LOGGER.error('Could not load resource');
+      throw new MatchException('Could not load resource', e);
     }
+  }
+
+  private static Map<String, String> getAddressDictionary() {
+    return getDictionary(ADDRESS_DICTIONARY);
+  }
+
+  private static Map<String, String> getNameDictionary() {
+    return getDictionary(NAME_DICTIONARY);
+  }
+
+  private static Map<String, String> getDictionary(String body) {
+    Map<String, String> dictionary = new Map<String, String>();
+    List<String> lines = body.split('\n');
+    for (String line : lines) {
+      List<String> parts = line.split(':');
+      if (parts.size() == 2) {
+        dictionary.put(parts[0], parts[1]);
+      }
+    }
+  }
 }

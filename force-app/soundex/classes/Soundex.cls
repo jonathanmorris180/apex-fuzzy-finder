@@ -3,22 +3,17 @@
  * contributor license agreements.  See the NOTICE file distributed with
  * this work for additional information regarding copyright ownership.
  * The ASF licenses this file to You under the Apache License, Version 2.0
- * (the "License"); you may not use this file except in compliance with
+ * (the 'License'); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
+ * distributed under the License is distributed on an 'AS IS' BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-package org.apache.commons.codec.language;
-
-import org.apache.commons.codec.EncoderException;
-import org.apache.commons.codec.StringEncoder;
 
 /**
  * Encodes a string into a Soundex value. Soundex is an encoding used to relate similar names, but can also be used as a
@@ -58,7 +53,7 @@ public class Soundex implements StringEncoder {
      * between consonants with the same code.
      * </p>
      */
-    public static final String US_ENGLISH_MAPPING_STRING = "01230120022455012623010202";
+    public static final String US_ENGLISH_MAPPING_STRING = '01230120022455012623010202';
 
     /**
      * This is a default mapping of the 26 letters used in US English. A value of {@code 0} for a letter position
@@ -107,7 +102,7 @@ public class Soundex implements StringEncoder {
      *
      * @since 1.11
      */
-    public static final Soundex US_ENGLISH_GENEALOGY = new Soundex("-123-12--22455-12623-1-2-2");
+    public static final Soundex US_ENGLISH_GENEALOGY = new Soundex('-123-12--22455-12623-1-2-2');
     //                                                              ABCDEFGHIJKLMNOPQRSTUVWXYZ
 
     /**
@@ -119,7 +114,7 @@ public class Soundex implements StringEncoder {
     private int maxLength = 4;
 
     /**
-     * Every letter of the alphabet is "mapped" to a numerical value. This char array holds the values to which each
+     * Every letter of the alphabet is 'mapped' to a numerical value. This char array holds the values to which each
      * letter is mapped. This implementation contains a default map for US_ENGLISH
      */
     private final char[] soundexMapping;
@@ -149,7 +144,7 @@ public class Soundex implements StringEncoder {
      * Creates a soundex instance using the given mapping. This constructor can be used to provide an internationalized
      * mapping for a non-Western character set.
      * <p>
-     * Every letter of the alphabet is "mapped" to a numerical value. This char array holds the values to which each
+     * Every letter of the alphabet is 'mapped' to a numerical value. This char array holds the values to which each
      * letter is mapped. This implementation contains a default map for US_ENGLISH
      * </p>
      * <p>
@@ -206,7 +201,7 @@ public class Soundex implements StringEncoder {
      * @return The number of characters in the two encoded Strings that are the same from 0 to 4.
      *
      * @see SoundexUtils#difference(StringEncoder,String,String)
-     * @see <a href="https://msdn.microsoft.com/library/default.asp?url=/library/en-us/tsqlref/ts_de-dz_8co5.asp"> MS
+     * @see <a href='https://msdn.microsoft.com/library/default.asp?url=/library/en-us/tsqlref/ts_de-dz_8co5.asp'> MS
      *          T-SQL DIFFERENCE</a>
      *
      * @throws EncoderException
@@ -233,7 +228,7 @@ public class Soundex implements StringEncoder {
     @Override
     public Object encode(final Object obj) throws EncoderException {
         if (!(obj instanceof String)) {
-            throw new EncoderException("Parameter supplied to Soundex encode is not of type java.lang.String");
+            throw new EncoderException('Parameter supplied to Soundex encode is not of type java.lang.String');
         }
         return soundex((String) obj);
     }
@@ -284,7 +279,7 @@ public class Soundex implements StringEncoder {
     private char map(final char ch) {
         final int index = ch - 'A';
         if (index < 0 || index >= this.soundexMapping.length) {
-            throw new IllegalArgumentException("The character is not mapped: " + ch + " (index=" + index + ")");
+            throw new IllegalArgumentException('The character is not mapped: ' + ch + ' (index=' + index + ')');
         }
         return this.soundexMapping[index];
     }

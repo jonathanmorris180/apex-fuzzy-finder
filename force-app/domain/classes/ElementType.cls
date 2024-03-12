@@ -1,14 +1,3 @@
-package com.intuit.fuzzymatcher.domain;
-
-
-import java.util.function.Function;
-import java.util.stream.Stream;
-
-import static com.intuit.fuzzymatcher.domain.MatchType.EQUALITY;
-import static com.intuit.fuzzymatcher.domain.MatchType.NEAREST_NEIGHBORS;
-import static com.intuit.fuzzymatcher.function.PreProcessFunction.*;
-import static com.intuit.fuzzymatcher.function.TokenizerFunction.*;
-
 /**
  * Enum to define different types of Element.
  * This is used only to categorize the data, and apply functions at different stages of match.

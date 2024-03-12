@@ -1,14 +1,3 @@
-package com.intuit.fuzzymatcher.function;
-
-import com.intuit.fuzzymatcher.component.Dictionary;
-import com.intuit.fuzzymatcher.util.Utils;
-import org.apache.commons.lang3.StringUtils;
-
-import java.util.Objects;
-import java.util.function.Function;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 /**
  * A functional interface to pre-process the elements. These function are applied to element.value String's
  */
@@ -39,7 +28,7 @@ public class PreProcessFunction<T>{
      * @return the function to perform numericValue
      */
     public static Function<String, String> numericValue() {
-        return (str) -> str.replaceAll("[^0-9]", "");
+        return (str) -> str.replaceAll('[^0-9]', '');
     }
 
     /**
@@ -48,7 +37,7 @@ public class PreProcessFunction<T>{
      * @return the function to perform removeSpecialChars
      */
     public static Function<String, String> removeSpecialChars() {
-        return (str) -> str.replaceAll("[^A-Za-z0-9 ]+", "");
+        return (str) -> str.replaceAll('[^A-Za-z0-9 ]+', '');
     }
 
     /**
@@ -58,7 +47,7 @@ public class PreProcessFunction<T>{
      */
     public static Function<String, String> removeDomain() {
         return str -> {
-            if (StringUtils.contains(str, "@")) {
+            if (StringUtils.contains(str, '@')) {
                 int index = str.indexOf('@');
                 return str.substring(0, index);
             }
@@ -67,7 +56,7 @@ public class PreProcessFunction<T>{
     }
 
     /**
-     * applies both "RemoveSpecialChars" and also "addressNormalization" functions
+     * applies both 'RemoveSpecialChars' and also 'addressNormalization' functions
      *
      * @return the function to perform addressPreprocessing
      */
@@ -76,7 +65,7 @@ public class PreProcessFunction<T>{
     }
 
     /**
-     * applies "removeTrailingNumber", "removeSpecialChars" and "nameNormalization" functions
+     * applies 'removeTrailingNumber', 'removeSpecialChars' and 'nameNormalization' functions
      *
      * @return the function to perform namePreprocessing
      */
@@ -85,8 +74,8 @@ public class PreProcessFunction<T>{
     }
 
     /**
-     * Uses "address-dictionary" to normalize commonly uses string in addresses
-     * eg. "st.", "street", "ave", "avenue"
+     * Uses 'address-dictionary' to normalize commonly uses string in addresses
+     * eg. 'st.', 'street', 'ave', 'avenue'
      *
      * @return the function to perform addressNormalization
      */
@@ -100,12 +89,12 @@ public class PreProcessFunction<T>{
      * @return the function to perform removeTrailingNumber
      */
     public static Function<String, String> removeTrailingNumber() {
-        return (str) -> str.replaceAll("\\d+$", "");
+        return (str) -> str.replaceAll('\\d+$', '');
     }
 
     /**
-     * Uses "name-dictionary" to remove common prefix and suffix in user names. like "jr", "sr", etc
-     * It also removes commonly used words in company names "corp", "inc", etc
+     * Uses 'name-dictionary' to remove common prefix and suffix in user names. like 'jr', 'sr', etc
+     * It also removes commonly used words in company names 'corp', 'inc', etc
      *
      * @return the function to perform nameNormalization
      */
@@ -114,12 +103,12 @@ public class PreProcessFunction<T>{
     }
 
     /**
-     * For a 10 character string, it prefixes it with US international code of "1".
+     * For a 10 character string, it prefixes it with US international code of '1'.
      *
      * @return the function to perform usPhoneNormalization
      */
     public static Function<String, String> usPhoneNormalization() {
-        return str -> numericValue().andThen(s -> (s.length() == 10) ? "1" + s : s).apply(str);
+        return str -> numericValue().andThen(s -> (s.length() == 10) ? '1' + s : s).apply(str);
     }
 
     /**
@@ -131,7 +120,7 @@ public class PreProcessFunction<T>{
         return (obj) ->  {
             if (obj instanceof String) {
                 String str = obj.toString();
-                Pattern pattern = Pattern.compile("-?\\d+(\\.\\d+)?");
+                Pattern pattern = Pattern.compile('-?\\d+(\\.\\d+)?');
                 Matcher matcher = pattern.matcher(str);
                 return matcher.find() ? matcher.group() : str;
             } else {

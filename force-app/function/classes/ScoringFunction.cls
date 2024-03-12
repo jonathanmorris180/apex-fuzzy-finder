@@ -1,12 +1,3 @@
-package com.intuit.fuzzymatcher.function;
-
-import com.intuit.fuzzymatcher.domain.Match;
-import com.intuit.fuzzymatcher.domain.Score;
-
-import java.util.List;
-import java.util.function.BiFunction;
-import java.util.stream.Collectors;
-
 /**
  * A functional interface to get a score between 2 Match objects
  */
@@ -46,7 +37,7 @@ public interface ScoringFunction extends BiFunction<Match, List<Score>, Score> {
     }
 
     /**
-     * Follows the same rules as "getAverageScore" and in addition applies weights to children.
+     * Follows the same rules as 'getAverageScore' and in addition applies weights to children.
      * It can be used for aggregating Elements to Documents, where weights can be provided at Element level
      *
      * @return the scoring function for WeightedAverage
@@ -63,7 +54,7 @@ public interface ScoringFunction extends BiFunction<Match, List<Score>, Score> {
     }
 
     /**
-     * Follows the same rules as "getAverageScore", and in addition if more than 1 children match above a score of 0.9,
+     * Follows the same rules as 'getAverageScore', and in addition if more than 1 children match above a score of 0.9,
      * it exponentially increases the overall score by using a 1.5 exponent
      *
      * @return the scoring function for ExponentialAverage

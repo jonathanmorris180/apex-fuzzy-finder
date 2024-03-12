@@ -1,16 +1,3 @@
-package com.intuit.fuzzymatcher.util;
-
-import com.intuit.fuzzymatcher.exception.MatchException;
-import org.apache.lucene.analysis.ngram.NGramTokenizer;
-import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
-
-import java.io.IOException;
-import java.io.StringReader;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 public class Utils {
 
     public static Stream<String> getNGrams(String value, int size) {
@@ -29,7 +16,7 @@ public class Utils {
                 nGramTokenizer.end();
                 nGramTokenizer.close();
             } catch (IOException io) {
-                throw new MatchException("Failure in creating tokens : ", io);
+                throw new MatchException('Failure in creating tokens : ', io);
             }
         }
         return stringStream.build();
@@ -43,14 +30,14 @@ public class Utils {
      * @return the normalized string
      */
     public static String getNormalizedString(String str, Map<String, String> dict) {
-        return Arrays.stream(str.split("\\s+"))
+        return Arrays.stream(str.split('\\s+'))
                 .map(d -> dict.containsKey(d.toLowerCase()) ?
                         dict.get(d.toLowerCase())
                         : d)
-                .collect(Collectors.joining(" "));
+                .collect(Collectors.joining(' '));
     }
 
     public static boolean isNumeric(String str) {
-        return str.matches(".*\\d.*");
+        return str.matches('.*\\d.*');
     }
 }

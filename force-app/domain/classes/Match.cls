@@ -1,15 +1,10 @@
-package com.intuit.fuzzymatcher.domain;
-
-import java.util.*;
-import java.util.stream.Collectors;
-
 /**
  * <p>
  * A generic class to hold the match between 2 objects and the score of the match result.
  * A match between similar Token, Element or Document is represented by this class.
  * <p>
- * The "data" and "matchedWith" object holds the 2 records that matched. And "score" represents the match for these 2 objects.
- * "childScore" is used by ScoringFunction to aggregate and calculate the "score" value
+ * The 'data' and 'matchedWith' object holds the 2 records that matched. And 'score' represents the match for these 2 objects.
+ * 'childScore' is used by ScoringFunction to aggregate and calculate the 'score' value
  */
 public class Match<T extends Matchable> {
 
@@ -71,10 +66,10 @@ public class Match<T extends Matchable> {
 
     @Override
     public String toString() {
-        return "Match{" +
-                "data=" + data +
-                ", matchedWith=" + matchedWith +
-                ", score=" + score.getResult() +
+        return 'Match{' +
+                'data=' + data +
+                ', matchedWith=' + matchedWith +
+                ', score=' + score.getResult() +
                 '}';
     }
 

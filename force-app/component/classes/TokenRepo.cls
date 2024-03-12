@@ -1,22 +1,9 @@
-package com.intuit.fuzzymatcher.component;
-
-import com.intuit.fuzzymatcher.domain.Element;
-import com.intuit.fuzzymatcher.domain.ElementClassification;
-import com.intuit.fuzzymatcher.domain.ElementType;
-import com.intuit.fuzzymatcher.domain.MatchType;
-import com.intuit.fuzzymatcher.domain.Token;
-import com.intuit.fuzzymatcher.exception.MatchException;
-
-import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.stream.Collectors;
-
 public class TokenRepo {
 
     private Map<ElementClassification, Repo> repoMap;
 
     public TokenRepo() {
-        this.repoMap = new ConcurrentHashMap<>();
+        this.repoMap = new Map<ElementClassification, Repo>();
     }
 
     public void put(Token token) {
@@ -47,8 +34,8 @@ public class TokenRepo {
 
         TreeSet<Object> tokenBinaryTree;
 
-        private final Double AGE_PCT_OF = 10D;
-        private final Double DATE_PCT_OF = 15777e7D; // 5 years of range
+        private final Double AGE_PCT_OF = 10.0;
+        private final Double DATE_PCT_OF = 157770000000.0; // 5 years of range
 
 
         Repo(MatchType matchType) {
@@ -120,7 +107,7 @@ public class TokenRepo {
                 this.lower = new Date(getLower(((Date) value).getTime(), pct, pctOf).longValue());
                 this.higher = new Date(getHigher(((Date) value).getTime(), pct, pctOf).longValue());
             } else {
-                throw new MatchException("Data Type not supported");
+                throw new MatchException('Data Type not supported');
             }
         }
 

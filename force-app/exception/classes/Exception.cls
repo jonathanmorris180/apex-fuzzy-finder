@@ -1,5 +1,3 @@
-package com.intuit.fuzzymatcher.exception;
-
 public class MatchException extends RuntimeException {
 
     public MatchException() {

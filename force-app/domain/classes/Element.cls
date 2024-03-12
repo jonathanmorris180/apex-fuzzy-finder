@@ -1,20 +1,6 @@
-package com.intuit.fuzzymatcher.domain;
-
-import org.apache.commons.lang3.StringUtils;
-
-import java.util.AbstractMap;
-import java.util.List;
-import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import static com.intuit.fuzzymatcher.function.PreProcessFunction.toLowerCase;
-import static com.intuit.fuzzymatcher.function.PreProcessFunction.trim;
-
 /**
  * <p>
- * This class represent the string "value" against which match are run.
+ * This class represent the string 'value' against which match are run.
  * <p>
  * Configurable attributes
  * <ul>
@@ -228,8 +214,8 @@ public class Element<T> implements Matchable {
 
     @Override
     public String toString() {
-        return "{" +
-                "'" + value + '\'' +
+        return '{' +
+                ''' + value + '\'' +
                 '}';
     }
 
