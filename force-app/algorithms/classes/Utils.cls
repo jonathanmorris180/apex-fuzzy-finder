@@ -1,85 +1,58 @@
-final public class Utils {
+public class Utils {
 
 
-    static List<String> tokenize(String in){
+    static List<String> tokenize(String input){
 
-        return Arrays.asList(in.split('\\s+'));
+        return input.split('\\s+');
 
     }
 
-    static Set<String> tokenizeSet(String in){
+    static Set<String> tokenizeSet(String input){
 
-        return new HashSet<>(tokenize(in));
+        return new Set<String>(tokenize(input));
 
     }
 
     static String sortAndJoin(List<String> col, String sep){
 
-        Collections.sort(col);
+        col.sort();
 
-        return join(col, sep);
+        return String.join(col, '');
 
-    }
-
-    static String join(List<String> strings, String sep) {
-        final StringBuilder buf = new StringBuilder(strings.size() * 16);
-
-        for(int i = 0; i < strings.size(); i++){
-
-            if(i < strings.size()) {
-                buf.append(sep);
-            }
-
-            buf.append(strings.get(i));
-
-        }
-
-        return buf.toString().trim();
     }
 
     static String sortAndJoin(Set<String> col, String sep){
 
-        return sortAndJoin(new ArrayList<>(col), sep);
+        return sortAndJoin(new List<String>(col), sep);
 
     }
 
-    public static <T extends Comparable<T>> List<T> findTopKHeap(List<T> arr, int k) {
-        PriorityQueue<T> pq = new PriorityQueue<T>();
+    public static Integer compare(Integer a, Integer b) {
+      return a == b ? 0 : (a < b ? -1 : 1);
+    }
 
-        for (T x : arr) {
-            if (pq.size() < k) pq.add(x);
-            else if (x.compareTo(pq.peek()) > 0) {
-                pq.poll();
-                pq.add(x);
+    public static List<Comparable> findTopKHeap(List<Comparable> arr, Integer k) {
+        PriorityQueue pq = new PriorityQueue();
+
+        for (Comparable x : arr) {
+            if (pq.size() < k) {
+                pq.enqueue(x);
+            } else if (x.compareTo(pq.peek()) > 0) {
+                pq.dequeue();
+                pq.enqueue(x);
             }
         }
-        List<T> res = new ArrayList<>();
-        for (int i =k; i > 0; i--) {
-            T polled = pq.poll();
+
+        List<Comparable> res = new List<Comparable>();
+        while (k-- > 0 && !pq.isEmpty()) {
+            Comparable polled = pq.dequeue();
             if (polled != null) {
                 res.add(polled);
             }
         }
+
         return res;
-
     }
-
-    static <T extends Comparable<? super T>> T max(T ... elems) {
-
-        if (elems.length == 0) return null;
-
-        T best = elems[0];
-
-        for(T t : elems){
-            if (t.compareTo(best) > 0) {
-                best = t;
-            }
-        }
-
-        return best;
-
-    }
-
 
 
 }

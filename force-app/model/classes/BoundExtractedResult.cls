@@ -1,44 +1,43 @@
-public class BoundExtractedResult<T> implements Comparable<BoundExtractedResult<T>> {
+public class BoundExtractedResult implements IExtractedResult {
 
-    private T referent;
-    private String string;
-    private int score;
-    private int index;
+    private String str;
+    private Integer score;
+    private Integer index;
 
-    public BoundExtractedResult(T referent, String string, int score, int index) {
-        this.referent = referent;
-        this.string = string;
+    public BoundExtractedResult(String str, Integer score, Integer index) {
+        this.str = str;
         this.score = score;
         this.index = index;
     }
 
-    public T getReferent() {
-        return referent;
-    }
-
     public String getString() {
-        return string;
+        return str;
     }
 
-    public void setString(String string) {
-        this.string = string;
+    public void setString(String str) {
+        this.str = str;
     }
 
-    public int getScore() {
+    public Integer getScore() {
         return score;
     }
 
-    public int getIndex() {
+    public Integer getIndex() {
         return index;
     }
 
-    @Override
-    public String toString() {
-        return '(string: ' + string + ', score: ' + score + ', index: ' + index+ ')';
+    public override String toString() {
+        return '(string: ' + str + ', score: ' + score + ', index: ' + index + ')';
     }
 
-    @Override
-    public int compareTo(BoundExtractedResult<T> o) {
-        return Integer.compare(this.getScore(), o.getScore());
+    public Integer compareTo(Object o) {
+      if (o instanceof BoundExtractedResult) {
+        return this.compare(this.getScore(), ((BoundExtractedResult) o).getScore()); // TODO: Convert to Utils method
+      }
+      return 0;
+    }
+
+    public Integer compare(Integer a, Integer b) {
+      return a == b ? 0 : (a < b ? -1 : 1);
     }
 }

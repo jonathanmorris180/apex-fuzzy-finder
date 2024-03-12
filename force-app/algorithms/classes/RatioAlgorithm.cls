@@ -7,7 +7,7 @@ public abstract class RatioAlgorithm extends BasicAlgorithm {
         this.ratio = new SimpleRatio();
     }
 
-    public RatioAlgorithm(ToStringFunction<String> stringFunction) {
+    public RatioAlgorithm(ToStringFunction stringFunction) {
         super(stringFunction);
     }
 
@@ -17,24 +17,23 @@ public abstract class RatioAlgorithm extends BasicAlgorithm {
     }
 
 
-    public RatioAlgorithm(ToStringFunction<String> stringFunction, Ratio ratio) {
+    public RatioAlgorithm(ToStringFunction stringFunction, Ratio ratio) {
         super(stringFunction);
         this.ratio = ratio;
     }
 
-    public abstract int apply(String s1, String s2, Ratio ratio, ToStringFunction<String> stringFunction);
+    public abstract Integer apply(String s1, String s2, Ratio ratio, ToStringFunction stringFunction);
 
     public RatioAlgorithm with(Ratio ratio) {
         setRatio(ratio);
         return this;
     }
 
-    public int apply(String s1, String s2, Ratio ratio) {
+    public Integer apply(String s1, String s2, Ratio ratio) {
         return apply(s1, s2, ratio, getStringFunction());
     }
 
-    @Override
-    public int apply(String s1, String s2, ToStringFunction<String> stringFunction) {
+    public override Integer apply(String s1, String s2, ToStringFunction stringFunction) {
         return apply(s1, s2, getRatio(), stringFunction);
     }
 

@@ -1,38 +1,43 @@
-public class ExtractedResult implements Comparable<ExtractedResult> {
+public class ExtractedResult implements IExtractedResult {
 
-    private String string;
-    private int score;
-    private int index;
+    private String str;
+    private Integer score;
+    private Integer index;
 
-    public ExtractedResult(String string, int score, int index) {
-        this.string = string;
+    public ExtractedResult(String str, Integer score, Integer index) {
+        this.str = str;
         this.score = score;
         this.index = index;
     }
 
-    @Override
-    public int compareTo(ExtractedResult o) {
-        return Integer.compare(this.getScore(), o.getScore());
+    public Integer compareTo(Object o) {
+      if (o instanceof ExtractedResult) {
+        return this.compare(this.getScore(), ((ExtractedResult) o).getScore()); // TODO: Convert to Utils method
+      }
+      return 0;
+    }
+
+    public Integer compare(Integer a, Integer b) {
+      return a == b ? 0 : (a < b ? -1 : 1);
     }
 
     public String getString() {
-        return string;
+        return str;
     }
 
-    public void setString(String string) {
-        this.string = string;
+    public void setString(String str) {
+        this.str = str;
     }
 
-    public int getScore() {
+    public Integer getScore() {
         return score;
     }
 
-    public int getIndex() {
+    public Integer getIndex() {
         return index;
     }
 
-    @Override
-    public String toString() {
-        return '(string: ' + string + ', score: ' + score + ', index: ' + index+ ')';
+    public override String toString() {
+        return '(string: ' + str + ', score: ' + score + ', index: ' + index + ')';
     }
 }

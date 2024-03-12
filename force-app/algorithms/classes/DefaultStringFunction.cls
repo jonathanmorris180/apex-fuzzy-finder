@@ -1,7 +1,7 @@
-public class DefaultStringFunction implements ToStringFunction<String> {
+public class DefaultStringFunction implements ToStringFunction {
 
-    private final static String pattern = '(?ui)\\W';
-    private final static Pattern r = compilePattern();
+    private final static String regex = '(?ui)\\W';
+    private final static Pattern r = Pattern.compile(regex);
 
 
     /**
@@ -11,15 +11,14 @@ public class DefaultStringFunction implements ToStringFunction<String> {
      * @param sub The string to substitute with
      * @return The replaced string
      */
-    public static String subNonAlphaNumeric(String in, String sub) {
+    public static String subNonAlphaNumeric(String input, String sub) {
 
-        Matcher m = r.matcher(in);
-
-        if(m.find()){
-            return m.replaceAll(sub);
-        } else {
-            return in;
-        }
+      Matcher m = r.matcher(input);
+      if (m.find()) {
+        return m.replaceAll(sub);
+      } else {
+        return input;
+      }
 
     }
 
@@ -29,34 +28,11 @@ public class DefaultStringFunction implements ToStringFunction<String> {
      * @param in Input string
      * @return The processed string
      */
-    @Override
-    public String apply(String in) {
-
-        in = subNonAlphaNumeric(in, ' ');
-        in = in.toLowerCase();
-        in = in.trim();
-
-        return in;
-
-    }
-
-    private static Pattern compilePattern(){
-
-        Pattern p;
-
-        try{
-            p = Pattern.compile(pattern, Pattern.UNICODE_CHARACTER_CLASS);
-        } catch (IllegalArgumentException e) {
-            // Even though Android supports the unicode pattern class
-            // for some reason it throws an IllegalArgumentException
-            // if we pass the flag like on standard Java runtime
-            //
-            // We catch this and recompile without the flag (unicode should still work)
-            p = Pattern.compile(pattern);
-        }
-
-        return p;
-
+    public String apply(String input) {
+      input = subNonAlphaNumeric(input, ' ');
+      input = input.toLowerCase();
+      input = input.trim();
+      return input;
     }
 
 }

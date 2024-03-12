@@ -1,7 +1,6 @@
 public class TokenSet extends RatioAlgorithm {
 
-    @Override
-    public int apply(String s1, String s2, Ratio ratio, ToStringFunction<String> stringFunction) {
+    public override Integer apply(String s1, String s2, Ratio ratio, ToStringFunction stringFunction) {
 
         s1 = stringFunction.apply(s1);
         s2 = stringFunction.apply(s2);
@@ -17,7 +16,7 @@ public class TokenSet extends RatioAlgorithm {
         String sorted1to2 = (sortedInter + ' ' + Utils.sortAndJoin(diff1to2, ' ')).trim();
         String sorted2to1 = (sortedInter + ' ' + Utils.sortAndJoin(diff2to1, ' ')).trim();
 
-        List<Integer> results = new ArrayList<>();
+        List<Integer> results = new List<Integer>();
 
         results.add(ratio.apply(sortedInter, sorted1to2));
         results.add(ratio.apply(sortedInter, sorted2to1));

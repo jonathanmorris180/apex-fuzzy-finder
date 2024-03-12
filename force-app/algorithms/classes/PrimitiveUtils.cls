@@ -1,12 +1,12 @@
-final class PrimitiveUtils {
+public class PrimitiveUtils {
 
-    static double max(double ... elems) {
+    static Double max(List<Double> elems) {
 
-        if (elems.length == 0) return 0;
+        if (elems.size() == 0) return 0;
 
-        double best = elems[0];
+        Double best = elems[0];
 
-        for(double t : elems){
+        for(Double t : elems){
             if (t > best) {
                 best = t;
             }
@@ -16,13 +16,13 @@ final class PrimitiveUtils {
 
     }
 
-    static int max(int ... elems) {
+    static Integer max(List<Integer> elems) {
 
-        if (elems.length == 0) return 0;
+        if (elems.size() == 0) return 0;
 
-        int best = elems[0];
+        Integer best = elems[0];
 
-        for(int t : elems){
+        for(Integer t : elems){
             if (t > best) {
                 best = t;
             }

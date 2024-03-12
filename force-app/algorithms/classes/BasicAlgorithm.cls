@@ -1,16 +1,16 @@
 public abstract class BasicAlgorithm implements Applicable {
 
-    private ToStringFunction<String> stringFunction;
+    private ToStringFunction stringFunction;
 
     public BasicAlgorithm() {
         this.stringFunction = new DefaultStringFunction();
     }
 
-    public BasicAlgorithm(ToStringFunction<String> stringFunction) {
+    public BasicAlgorithm(ToStringFunction stringFunction) {
         this.stringFunction = stringFunction;
     }
 
-    public abstract Integer apply(String s1, String s2, ToStringFunction<String> stringProcessor);
+    public abstract Integer apply(String s1, String s2, ToStringFunction stringProcessor);
 
     public Integer apply(String s1, String s2){
 
@@ -18,21 +18,21 @@ public abstract class BasicAlgorithm implements Applicable {
 
     }
 
-    public BasicAlgorithm with(ToStringFunction<String> stringFunction){
+    public BasicAlgorithm with(ToStringFunction stringFunction){
         setStringFunction(stringFunction);
         return this;
     }
 
     public BasicAlgorithm noProcessor(){
-        this.stringFunction = ToStringFunction.NO_PROCESS;
+        this.stringFunction = new NoProcessToStringFunction();
         return this;
     }
 
-    void setStringFunction(ToStringFunction<String> stringFunction){
+    void setStringFunction(ToStringFunction stringFunction){
         this.stringFunction = stringFunction;
     }
 
-    public ToStringFunction<String> getStringFunction() {
+    public ToStringFunction getStringFunction() {
         return stringFunction;
     }
 }

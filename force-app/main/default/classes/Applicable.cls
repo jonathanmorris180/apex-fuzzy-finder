@@ -10,6 +10,6 @@ public interface Applicable {
      * @param s2 Input string
      * @return The score of similarity
      */
-    int apply(String s1, String s2);
+    Integer apply(String s1, String s2);
 
 }

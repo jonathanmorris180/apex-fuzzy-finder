@@ -1,17 +1,17 @@
-final class SetUtils {
+public class SetUtils {
 
-    static <T> Set<T> intersection (Set<T> s1, Set<T> s2){
+    static Set<String> intersection (Set<String> s1, Set<String> s2){
 
-        Set<T> intersection = new HashSet<>(s1);
+        Set<String> intersection = new Set<String>(s1);
         intersection.retainAll(s2);
 
         return intersection;
 
     }
 
-    static <T> Set<T> difference (Set<T> s1, Set<T> s2) {
+    static Set<String> difference (Set<String> s1, Set<String> s2){
 
-        Set<T> difference = new HashSet<>(s1);
+        Set<String> difference = new Set<String>(s1);
         difference.removeAll(s2);
 
         return difference;
