@@ -34,14 +34,14 @@ public class WeightedRatio extends BasicAlgorithm {
             Double partialSor = tokenSortPartialRatio(s1, s2) * unbaseScale * partialScale;
             Double partialSet = tokenSetPartialRatio(s1, s2) * unbaseScale * partialScale;
 
-            return (Integer) round(max(base, partial, partialSor, partialSet));
+            return (Integer) round(PrimitiveUtils.max(base, partial, partialSor, partialSet));
 
         } else {
 
             Double tokenSort = tokenSortRatio(s1, s2) * unbaseScale;
             Double tokenSet = tokenSetRatio(s1, s2) * unbaseScale;
 
-            return (Integer) round(max(base, tokenSort, tokenSet));
+            return (Integer) round(PrimitiveUtils.max(base, tokenSort, tokenSet));
 
         }
 
