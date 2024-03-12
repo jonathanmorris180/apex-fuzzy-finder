@@ -1,5 +1,3 @@
-package me.xdrop.fuzzywuzzy;
-
 /**
  * Transforms the input string
  *

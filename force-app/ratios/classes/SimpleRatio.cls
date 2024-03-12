@@ -1,9 +1,3 @@
-package me.xdrop.fuzzywuzzy.ratios;
-
-import me.xdrop.diffutils.DiffUtils;
-import me.xdrop.fuzzywuzzy.Ratio;
-import me.xdrop.fuzzywuzzy.ToStringFunction;
-
 public class SimpleRatio implements Ratio {
 
     /**

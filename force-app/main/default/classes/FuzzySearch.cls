@@ -1,17 +1,3 @@
-package me.xdrop.fuzzywuzzy;
-
-import me.xdrop.fuzzywuzzy.algorithms.TokenSet;
-import me.xdrop.fuzzywuzzy.algorithms.TokenSort;
-import me.xdrop.fuzzywuzzy.algorithms.WeightedRatio;
-import me.xdrop.fuzzywuzzy.model.BoundExtractedResult;
-import me.xdrop.fuzzywuzzy.model.ExtractedResult;
-import me.xdrop.fuzzywuzzy.ratios.PartialRatio;
-import me.xdrop.fuzzywuzzy.ratios.SimpleRatio;
-
-import java.util.Collection;
-import java.util.List;
-
-
 /**
  * FuzzySearch facade class
  */
@@ -46,7 +32,7 @@ public class FuzzySearch {
 
     /**
      * Inconsistent substrings lead to problems in matching. This ratio
-     * uses a heuristic called "best partial" for when two strings
+     * uses a heuristic called 'best partial' for when two strings
      * are of noticeably different lengths.
      *
      * @param s1 Input string
@@ -59,7 +45,7 @@ public class FuzzySearch {
 
     /**
      * Inconsistent substrings lead to problems in matching. This ratio
-     * uses a heuristic called "best partial" for when two strings
+     * uses a heuristic called 'best partial' for when two strings
      * are of noticeably different lengths.
      *
      * @param s1              Input string

@@ -1,9 +1,3 @@
-package me.xdrop.fuzzywuzzy.algorithms;
-
-import me.xdrop.fuzzywuzzy.Ratio;
-import me.xdrop.fuzzywuzzy.ToStringFunction;
-import me.xdrop.fuzzywuzzy.ratios.SimpleRatio;
-
 public abstract class RatioAlgorithm extends BasicAlgorithm {
 
     private Ratio ratio;

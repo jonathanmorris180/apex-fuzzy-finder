@@ -1,5 +1,3 @@
-package me.xdrop.fuzzywuzzy;
-
 /**
  * A ratio/algorithm that can be applied
  */

@@ -1,5 +1,3 @@
-package me.xdrop.fuzzywuzzy.model;
-
 public class BoundExtractedResult<T> implements Comparable<BoundExtractedResult<T>> {
 
     private T referent;
@@ -36,7 +34,7 @@ public class BoundExtractedResult<T> implements Comparable<BoundExtractedResult<
 
     @Override
     public String toString() {
-        return "(string: " + string + ", score: " + score + ", index: " + index+ ")";
+        return '(string: ' + string + ', score: ' + score + ', index: ' + index+ ')';
     }
 
     @Override

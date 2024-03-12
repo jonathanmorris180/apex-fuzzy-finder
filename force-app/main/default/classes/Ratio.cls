@@ -1,5 +1,3 @@
-package me.xdrop.fuzzywuzzy;
-
 /**
  * Interface for the different ratios
  */

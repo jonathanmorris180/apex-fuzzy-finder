@@ -1,14 +1,3 @@
-package me.xdrop.fuzzywuzzy;
-
-import me.xdrop.fuzzywuzzy.algorithms.Utils;
-import me.xdrop.fuzzywuzzy.model.BoundExtractedResult;
-import me.xdrop.fuzzywuzzy.model.ExtractedResult;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-
 public class Extractor {
 
     private int cutoff;

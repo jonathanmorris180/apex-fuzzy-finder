@@ -1,7 +1,3 @@
-package me.xdrop.fuzzywuzzy.algorithms;
-
-import me.xdrop.fuzzywuzzy.StringProcessor;
-
 /**
  * @deprecated Use {@code ToStringFunction#NO_PROCESS} instead.
  */

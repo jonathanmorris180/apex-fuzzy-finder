@@ -1,12 +1,6 @@
-package me.xdrop.fuzzywuzzy.algorithms;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import me.xdrop.fuzzywuzzy.ToStringFunction;
-
 public class DefaultStringFunction implements ToStringFunction<String> {
 
-    private final static String pattern = "(?ui)\\W";
+    private final static String pattern = '(?ui)\\W';
     private final static Pattern r = compilePattern();
 
 
@@ -38,7 +32,7 @@ public class DefaultStringFunction implements ToStringFunction<String> {
     @Override
     public String apply(String in) {
 
-        in = subNonAlphaNumeric(in, " ");
+        in = subNonAlphaNumeric(in, ' ');
         in = in.toLowerCase();
         in = in.trim();
 

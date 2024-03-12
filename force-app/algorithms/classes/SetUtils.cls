@@ -1,8 +1,3 @@
-package me.xdrop.fuzzywuzzy.algorithms;
-
-import java.util.HashSet;
-import java.util.Set;
-
 final class SetUtils {
 
     static <T> Set<T> intersection (Set<T> s1, Set<T> s2){

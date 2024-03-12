@@ -1,13 +1,9 @@
-package me.xdrop.fuzzywuzzy.algorithms;
-
-import java.util.*;
-
 final public class Utils {
 
 
     static List<String> tokenize(String in){
 
-        return Arrays.asList(in.split("\\s+"));
+        return Arrays.asList(in.split('\\s+'));
 
     }
 

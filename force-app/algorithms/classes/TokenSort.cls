@@ -1,11 +1,3 @@
-package me.xdrop.fuzzywuzzy.algorithms;
-
-import me.xdrop.fuzzywuzzy.Ratio;
-
-import java.util.Arrays;
-import java.util.List;
-import me.xdrop.fuzzywuzzy.ToStringFunction;
-
 public class TokenSort extends RatioAlgorithm {
 
     @Override
@@ -21,10 +13,10 @@ public class TokenSort extends RatioAlgorithm {
     private static String processAndSort(String in, ToStringFunction<String> stringProcessor) {
 
         in = stringProcessor.apply(in);
-        String[] wordsArray = in.split("\\s+");
+        String[] wordsArray = in.split('\\s+');
 
         List<String> words = Arrays.asList(wordsArray);
-        String joined = Utils.sortAndJoin(words, " ");
+        String joined = Utils.sortAndJoin(words, ' ');
 
         return joined.trim();
 

@@ -1,5 +1,3 @@
-package me.xdrop.fuzzywuzzy;
-
 /**
  * Transforms an item of type T to a String.
  *

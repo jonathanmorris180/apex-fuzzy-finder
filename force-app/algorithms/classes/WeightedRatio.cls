@@ -1,13 +1,4 @@
-package me.xdrop.fuzzywuzzy.algorithms;
-
-import me.xdrop.fuzzywuzzy.ToStringFunction;
-
-import static me.xdrop.fuzzywuzzy.FuzzySearch.*;
-import static me.xdrop.fuzzywuzzy.algorithms.PrimitiveUtils.max;
-import static java.lang.Math.round;
-
-
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings('WeakerAccess')
 public class WeightedRatio extends BasicAlgorithm  {
 
     public static final double UNBASE_SCALE = .95;

@@ -1,5 +1,3 @@
-package me.xdrop.fuzzywuzzy.algorithms;
-
 final class PrimitiveUtils {
 
     static double max(double ... elems) {

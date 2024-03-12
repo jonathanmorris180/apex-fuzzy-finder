@@ -1,14 +1,3 @@
-package me.xdrop.fuzzywuzzy.ratios;
-
-import me.xdrop.diffutils.DiffUtils;
-import me.xdrop.diffutils.structs.MatchingBlock;
-import me.xdrop.fuzzywuzzy.Ratio;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import me.xdrop.fuzzywuzzy.ToStringFunction;
-
 /**
  * Partial ratio of similarity
  */

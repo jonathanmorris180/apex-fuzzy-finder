@@ -1,8 +1,3 @@
-package me.xdrop.fuzzywuzzy.algorithms;
-
-import me.xdrop.fuzzywuzzy.Applicable;
-import me.xdrop.fuzzywuzzy.ToStringFunction;
-
 public abstract class BasicAlgorithm implements Applicable {
 
     private ToStringFunction<String> stringFunction;
@@ -15,9 +10,9 @@ public abstract class BasicAlgorithm implements Applicable {
         this.stringFunction = stringFunction;
     }
 
-    public abstract int apply(String s1, String s2, ToStringFunction<String> stringProcessor);
+    public abstract Integer apply(String s1, String s2, ToStringFunction<String> stringProcessor);
 
-    public int apply(String s1, String s2){
+    public Integer apply(String s1, String s2){
 
         return apply(s1, s2, this.stringFunction);
 

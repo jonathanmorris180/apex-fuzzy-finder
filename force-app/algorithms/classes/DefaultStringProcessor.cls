@@ -1,16 +1,10 @@
-package me.xdrop.fuzzywuzzy.algorithms;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import me.xdrop.fuzzywuzzy.StringProcessor;
-
 /**
  * @deprecated Use {@code DefaultStringFunction} instead.
  */
 @Deprecated
 public class DefaultStringProcessor extends StringProcessor {
 
-    private final static String pattern = "[^\\p{Alnum}]";
+    private final static String pattern = '[^\\p{Alnum}]';
     private final static Pattern r = compilePattern();
 
 
@@ -42,7 +36,7 @@ public class DefaultStringProcessor extends StringProcessor {
     @Override
     public String process(String in) {
 
-        in = subNonAlphaNumeric(in, " ");
+        in = subNonAlphaNumeric(in, ' ');
         in = in.toLowerCase();
         in = in.trim();
 
