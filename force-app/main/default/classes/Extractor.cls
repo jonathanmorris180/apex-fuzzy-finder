@@ -227,8 +227,8 @@ public class Extractor {
     public List<ExtractedResult> extractTop(String query, List<String> choices, Applicable func, Integer numChoices) {
         List<ExtractedResult> best = extractWithoutOrder(query, choices, func);
 
-        List<ExtractedResult> results = (List<ExtractedResult>) Utils.findTopKHeap(best, numChoices);
-        results = (List<ExtractedResult>) Collections.reverse(results);
+        List<ExtractedResult> results = this.toExtractedResult(Utils.findTopKHeap(best, numChoices));
+        results = this.toExtractedResult(Collections.reverse(results));
 
         return results;
     }
@@ -240,6 +240,16 @@ public class Extractor {
         results = (List<ExtractedResult>) Collections.reverse(results);
 
         return results;
+    }
+
+    private List<ExtractedResult> toExtractedResult(List<Comparable> items) {
+        List<ExtractedResult> result = new List<ExtractedResult>();
+        for (Comparable c : items) {
+            if (c instanceof ExtractedResult) {
+                result.add((ExtractedResult) c);
+            }
+        }
+        return result;
     }
 
     /**

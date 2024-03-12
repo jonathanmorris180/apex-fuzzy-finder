@@ -200,7 +200,7 @@ public class DiffUtils {
                 continue;
             }
 
-            Assert.isTrue(false);
+            Assert.isTrue(false, 'No statements evaluated to true');
 
         }
 
@@ -274,7 +274,7 @@ public class DiffUtils {
 
         }
 
-        Assert.isTrue(mb == noOfMB);
+        Assert.isTrue(mb == noOfMB, 'mb != noOfMB');
 
         MatchingBlock finalBlock = new MatchingBlock();
         finalBlock.spos = len1;
@@ -332,7 +332,6 @@ public class DiffUtils {
                     o++;
                   } while (i != 0 && ops[o].type == type &&
                       spos == ops[o].spos && dpos == ops[o].dpos);
-                  break;
                 }
 
                 when DEL {
@@ -342,7 +341,6 @@ public class DiffUtils {
                     o++;
                   } while (i != 0 && ops[o].type == type &&
                       spos == ops[o].spos && dpos == ops[o].dpos);
-                  break;
                 }
 
                 when INS {
@@ -352,11 +350,9 @@ public class DiffUtils {
                     o++;
                   } while (i != 0 && ops[o].type == type &&
                       spos == ops[o].spos && dpos == ops[o].dpos);
-                  break;
                 }
 
                 when else {
-                  break;
                 }
             }
         }
@@ -404,7 +400,6 @@ public class DiffUtils {
                     o++;
                   } while (i != 0 && ops[o].type == type &&
                       spos == ops[o].spos && dpos == ops[o].dpos);
-                  break;
                 }
 
                 when DEL {
@@ -414,7 +409,6 @@ public class DiffUtils {
                     o++;
                   } while (i != 0 && ops[o].type == type &&
                       spos == ops[o].spos && dpos == ops[o].dpos);
-                  break;
                 }
 
                 when INS {
@@ -424,17 +418,17 @@ public class DiffUtils {
                     o++;
                   } while (i != 0 && ops[o].type == type &&
                       spos == ops[o].spos && dpos == ops[o].dpos);
-                  break;
                 }
 
                 when else {
-                  break;
                 }
             }
         }
 
         if (spos < len1 || dpos < len2) {
-            Assert.isTrue(len1 - spos == len2 - dpos);
+            if (len1 - spos != len2 - dpos) {
+              throw new DiffUtilsException('getMatchingBlocks: len1 - spos != len2 - dpos');
+            }
 
             MatchingBlock mb = new MatchingBlock();
             mb.spos = spos;
@@ -444,7 +438,7 @@ public class DiffUtils {
             matchingBlocks[mbIndex++] = mb;
         }
 
-        Assert.isTrue(numberOfMatchingBlocks == mbIndex);
+        Assert.isTrue(numberOfMatchingBlocks == mbIndex, 'numberOfMatchingBlocks != mbIndex');
 
         MatchingBlock finalBlock = new MatchingBlock();
         finalBlock.spos = len1;
@@ -498,7 +492,6 @@ public class DiffUtils {
                     o++;
                   } while (i != 0 && ops[o].type == type &&
                       spos == ops[o].spos && dpos == ops[o].dpos);
-                  break;
                 }
 
                 when DEL {
@@ -508,7 +501,6 @@ public class DiffUtils {
                     o++;
                   } while (i != 0 && ops[o].type == type &&
                       spos == ops[o].spos && dpos == ops[o].dpos);
-                  break;
                 }
 
                 when INS {
@@ -518,11 +510,9 @@ public class DiffUtils {
                     o++;
                   } while (i != 0 && ops[o].type == type &&
                       spos == ops[o].spos && dpos == ops[o].dpos);
-                  break;
                 }
 
                 when else {
-                  break;
                 }
             }
         }
@@ -574,7 +564,6 @@ public class DiffUtils {
                     o++;
                   } while (i != 0 && ops[o].type == type &&
                       spos == ops[o].spos && dpos == ops[o].dpos);
-                  break;
                 }
 
                 when DEL {
@@ -584,7 +573,6 @@ public class DiffUtils {
                     o++;
                   } while (i != 0 && ops[o].type == type &&
                       spos == ops[o].spos && dpos == ops[o].dpos);
-                  break;
                 }
 
                 when INS {
@@ -594,11 +582,9 @@ public class DiffUtils {
                     o++;
                   } while (i != 0 && ops[o].type == type &&
                       spos == ops[o].spos && dpos == ops[o].dpos);
-                  break;
                 }
 
                 when else {
-                    break;
                 }
             }
 
@@ -610,7 +596,7 @@ public class DiffUtils {
 
         if (spos < len1 || dpos < len2) {
 
-            Assert.isTrue(len1 - spos == len2 - dpos);
+            Assert.isTrue(len1 - spos == len2 - dpos, 'editOpsToOpCodes: len1 - spos != len2 - dpos');
             if (opCodes[oIndex] == null)
                 opCodes[oIndex] = new OpCode();
             opCodes[oIndex].type = EditType.KEEP;
@@ -623,7 +609,7 @@ public class DiffUtils {
 
         }
 
-        Assert.isTrue(oIndex == noOfBlocks);
+        Assert.isTrue(oIndex == noOfBlocks, 'oIndex != noOfBlocks');
 
         return opCodes;
 
@@ -837,11 +823,15 @@ public class DiffUtils {
 
         Integer editDistance = levEditDistance(s1, s2, 1);
 
-        return (lensum - editDistance) / (double) lensum;
+        if (lensum == 0)
+            return 0.0;
+
+        return (lensum - editDistance) / (Double) lensum;
 
     }
 
 
+  public class DiffUtilsException extends Exception {}
 
 }
 

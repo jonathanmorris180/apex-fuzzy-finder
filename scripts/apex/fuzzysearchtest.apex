@@ -5,7 +5,9 @@ Integer result = FuzzySearch.ratio('mysimilarstring', 'mymostsimilarstsdsdring')
 System.debug('result: ' + result); 
 
 List<ExtractedResult> results = FuzzySearch.extractTop('goolge', choices, 2);
+List<ExtractedResult> results2 = FuzzySearch.extractTop('newyork', moreChoices, 3);
 
 
 System.debug('results: ' + results);
+System.debug('results2: ' + results2);
 

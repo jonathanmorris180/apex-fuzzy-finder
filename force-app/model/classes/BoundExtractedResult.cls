@@ -1,4 +1,4 @@
-public class BoundExtractedResult implements IExtractedResult {
+public class BoundExtractedResult implements IExtractedResult, Comparable {
 
     private String str;
     private Integer score;

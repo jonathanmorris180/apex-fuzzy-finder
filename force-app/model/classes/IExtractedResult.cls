@@ -1,4 +1,4 @@
-public interface IExtractedResult extends Comparable {
+public interface IExtractedResult {
     String getString();
     void setString(String str);
     Integer getScore();
