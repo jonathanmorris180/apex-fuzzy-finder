@@ -171,7 +171,7 @@ public class Extractor {
     public List<ExtractedResult> extractTop(String query, List<String> choices, Applicable func) {
         List<ExtractedResult> best = extractWithoutOrder(query, choices, func);
         best.sort();
-        Collections.reverse(best);
+        best = this.toExtractedResult(Collections.reverse(best)); // TODO: Convert to Utils method
 
         return best;
     }
