@@ -1,16 +1,16 @@
 public class DefaultStringFunction implements ToStringFunction {
-  private final static String regex = '(?ui)\\W';
-  private final static Pattern r = Pattern.compile(regex);
+  private final static String REGEX = '(?ui)\\W';
+  private final static Pattern R = Pattern.compile(REGEX);
 
   /**
    * Substitute non alphanumeric characters.
    *
-   * @param in The input string
+   * @param input The input string
    * @param sub The string to substitute with
    * @return The replaced string
    */
   public static String subNonAlphaNumeric(String input, String sub) {
-    Matcher m = r.matcher(input);
+    Matcher m = R.matcher(input);
     if (m.find()) {
       return m.replaceAll(sub);
     } else {
@@ -21,7 +21,7 @@ public class DefaultStringFunction implements ToStringFunction {
   /**
    * Performs the default string processing on the input string
    *
-   * @param in Input string
+   * @param input Input string
    * @return The processed string
    */
   public String apply(String input) {
