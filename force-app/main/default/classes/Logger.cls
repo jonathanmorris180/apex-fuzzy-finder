@@ -17,12 +17,21 @@ public class Logger {
   }
 
   private void init() {
-    this.log(Severity.INFO, String.format('Initializing logger for {0}.class', new List<Object>{this.type.getName()}));
+    this.log(
+      Severity.INFO,
+      String.format(
+        'Initializing logger for {0}.class',
+        new List<Object>{ this.type.getName() }
+      )
+    );
   }
 
   private void log(Severity sev, String message) {
     String severity = sev.name();
-    log.Message__c += String.format(FORMAT, new List<Object>{DateTime.now(), severity, this.type.getName(), message});
+    log.Message__c += String.format(
+      FORMAT,
+      new List<Object>{ DateTime.now(), severity, this.type.getName(), message }
+    );
   }
 
   public void info(String message) {

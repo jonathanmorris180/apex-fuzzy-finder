@@ -1,9 +1,7 @@
 public enum EditType {
-
-    DEL,
-    EQUAL,
-    INS,
-    REPLACE,
-    KEEP
-
+  DEL,
+  EQUAL,
+  INS,
+  REPLACE,
+  KEEP
 }
