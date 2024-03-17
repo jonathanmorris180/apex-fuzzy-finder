@@ -1,6 +1,6 @@
 public class PrimitiveUtils {
   public static Double max(List<Double> elems) {
-    if (elems.size() == 0) {
+    if (elems == null || elems.isEmpty()) {
       return 0;
     }
 
@@ -16,7 +16,7 @@ public class PrimitiveUtils {
   }
 
   public static Integer max(List<Integer> elems) {
-    if (elems.size() == 0) {
+    if (elems == null || elems.isEmpty()) {
       return 0;
     }
 
