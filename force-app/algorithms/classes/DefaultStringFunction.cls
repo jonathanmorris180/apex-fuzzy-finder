@@ -9,7 +9,8 @@ public class DefaultStringFunction implements ToStringFunction {
    * @param sub The string to substitute with
    * @return The replaced string
    */
-  public static String subNonAlphaNumeric(String input, String sub) {
+  @testVisible
+  private String subNonAlphaNumeric(String input, String sub) {
     Matcher m = R.matcher(input);
     if (m.find()) {
       return m.replaceAll(sub);
@@ -25,7 +26,7 @@ public class DefaultStringFunction implements ToStringFunction {
    * @return The processed string
    */
   public String apply(String input) {
-    input = subNonAlphaNumeric(input, ' ');
+    input = this.subNonAlphaNumeric(input, ' ');
     input = input.toLowerCase();
     input = input.trim();
     return input;
