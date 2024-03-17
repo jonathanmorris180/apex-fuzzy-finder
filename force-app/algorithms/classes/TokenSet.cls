@@ -1,10 +1,18 @@
 public class TokenSet extends RatioAlgorithm {
+  private static final Logger LOGGER = LoggerFactory.getLogger(TokenSet.class);
+
   public override Integer apply(
     String s1,
     String s2,
     Ratio ratio,
     ToStringFunction stringFunction
   ) {
+    LOGGER.info(
+      String.format(
+        'Getting token set for strings {0} and {1}',
+        new List<Object>{ s1, s2 }
+      )
+    );
     s1 = stringFunction.apply(s1);
     s2 = stringFunction.apply(s2);
 

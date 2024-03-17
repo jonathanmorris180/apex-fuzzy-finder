@@ -31,15 +31,16 @@ public class PartialRatio implements Ratio {
     for (MatchingBlock mb : matchingBlocks) {
       Integer dist = mb.dpos - mb.spos;
 
-      Integer long_start = dist > 0 ? dist : 0;
-      Integer long_end = long_start + shorter.length();
+      Integer longStart = dist > 0 ? dist : 0;
+      Integer longEnd = longStart + shorter.length();
 
-      if (long_end > longer.length())
-        long_end = longer.length();
+      if (longEnd > longer.length()) {
+        longEnd = longer.length();
+      }
 
-      String long_substr = longer.substring(long_start, long_end);
+      String longSubstr = longer.substring(longStart, longEnd);
 
-      double ratio = DiffUtils.getRatio(shorter, long_substr);
+      double ratio = DiffUtils.getRatio(shorter, longSubstr);
 
       if (ratio > .995) {
         return 100;

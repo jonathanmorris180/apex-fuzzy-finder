@@ -1,4 +1,17 @@
-List<String> oppNames = new List<String>{};
+List<String> oppNames = new List<String>{
+  'Testing test',
+  'Testing test',
+  'Testing test',
+  'Testing test',
+  'Testing test',
+  'Testing test',
+  'Testing test',
+  'Testing test',
+  'Testing test',
+  'Testing test',
+  'Testing test',
+  'Testing test'
+};
 // Add names
 
 public class TestComparable implements Comparable {
@@ -16,11 +29,13 @@ public class TestComparable implements Comparable {
   }
 }
 
+private static final Logger LOGGER = LoggerFactory.getLogger(TokenSort.class);
+LOGGER.enable(); // Be careful about using this in production as the logs will created for each string in the oppNames list
 System.debug('Before: ' + System.now());
 Integer highestRatio = 0;
 List<TestComparable> results = new List<TestComparable>();
 for (String s : oppNames) {
-  Integer result = FuzzySearch.tokenSortRatio('african new hpts 22', s); // Seems to give the best results
+  Integer result = FuzzySearch.tokenSortRatio('tes', s); // Seems to give the best results
   results.add(new TestComparable(s, result));
 }
 results.sort();
@@ -28,5 +43,6 @@ List<TestComparable> topResults = new List<TestComparable>();
 for (Integer i = 0; i < 10; i++) {
   topResults.add(results[i]);
 }
+LOGGER.save();
 System.debug('results:  ' + topResults);
 System.debug('After: ' + System.now());

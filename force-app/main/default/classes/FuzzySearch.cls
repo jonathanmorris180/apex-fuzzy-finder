@@ -1,6 +1,9 @@
 /**
  * FuzzySearch facade class
  */
+@SuppressWarnings(
+  'PMD.ExcessiveClassLength, PMD.ExcessivePublicCount, PMD.CyclomaticComplexity'
+)
 public class FuzzySearch {
   /**
    * Calculates a Levenshtein simple ratio between the strings.

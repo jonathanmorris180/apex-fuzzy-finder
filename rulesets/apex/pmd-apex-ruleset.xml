@@ -24,7 +24,7 @@
   >
       <priority>3</priority>
       <properties>
-         <property name="minimum" value="4" />
+         <property name="minimum" value="7" />
       </properties>
    </rule>
    <rule

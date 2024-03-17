@@ -1,6 +1,7 @@
-public class Logger {
+public without sharing class Logger {
   private Type type;
   private static Log__c log = new Log__c(Message__c = '');
+  private static Boolean enabled = false;
   private static final String FORMAT = '{0} [{1}] [{2}.class] --- {3}\n'; // {0} = timestamp, {1} = severity, {3} = type {4} = message
 
   private enum Severity {
@@ -27,11 +28,22 @@ public class Logger {
   }
 
   private void log(Severity sev, String message) {
+    if (!enabled) {
+      return;
+    }
     String severity = sev.name();
     log.Message__c += String.format(
       FORMAT,
       new List<Object>{ DateTime.now(), severity, this.type.getName(), message }
     );
+  }
+
+  public void enable() {
+    enabled = true;
+  }
+
+  public void disable() {
+    enabled = false;
   }
 
   public void info(String message) {
@@ -55,6 +67,9 @@ public class Logger {
   }
 
   public void save() {
+    if (!enabled) {
+      return;
+    }
     insert log;
   }
 }
