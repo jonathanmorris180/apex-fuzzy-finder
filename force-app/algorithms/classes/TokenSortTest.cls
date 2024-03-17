@@ -12,7 +12,7 @@ public class TokenSortTest {
     System.assertEquals(
       100,
       result,
-      'The ratio should be 100 -- see https://chairnerd.seatgeek.com/fuzzywuzzy-fuzzy-string-matching-in-python/'
+      'The token sort ratio should be 100 -- see https://chairnerd.seatgeek.com/fuzzywuzzy-fuzzy-string-matching-in-python/'
     );
   }
 

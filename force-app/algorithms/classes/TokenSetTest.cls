@@ -12,7 +12,7 @@ public class TokenSetTest {
     System.assertEquals(
       90,
       result,
-      'The ratio should be 90 -- see https://chairnerd.seatgeek.com/fuzzywuzzy-fuzzy-string-matching-in-python/'
+      'The token set ratio should be 90 -- see https://chairnerd.seatgeek.com/fuzzywuzzy-fuzzy-string-matching-in-python/'
     );
   }
 
