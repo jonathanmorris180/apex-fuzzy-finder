@@ -1,5 +1,5 @@
 @isTest
-class TestComparable implements Comparable {
+public class TestComparable implements Comparable {
   public String name;
   public Integer ratio;
   public TestComparable(String name, Integer ratio) {

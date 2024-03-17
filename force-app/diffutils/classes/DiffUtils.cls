@@ -3,6 +3,7 @@
  * The code was ported line by line but unfortunately it was mostly undocumented,
  * so it is mostly non readable (eg. var names)
  */
+@SuppressWarnings('PMD')
 public class DiffUtils {
   public static EditOp[] getEditOps(String s1, String s2) {
     return getEditOps(s1.length(), s1, s2.length(), s2);

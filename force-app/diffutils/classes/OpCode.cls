@@ -1,7 +1,9 @@
 public class OpCode {
   public EditType type;
-  public Integer sbeg, send;
-  public Integer dbeg, dend;
+  public Integer sbeg;
+  public Integer send;
+  public Integer dbeg;
+  public Integer dend;
 
   public override String toString() {
     return type.name() +

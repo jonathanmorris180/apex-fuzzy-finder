@@ -1,5 +1,6 @@
 public class Utils {
-  static List<String> tokenize(String input) {
+  @testVisible
+  private static List<String> tokenize(String input) {
     return input.split('\\s+');
   }
 
@@ -7,9 +8,13 @@ public class Utils {
     return new Set<String>(tokenize(input));
   }
 
+  /**
+   * Not using the separator here as the Java implementation has a bug.
+   * When a space is used as the separator instead of the empty string,
+   * TokenSetTest.itGetsTheTokenSetWithSimpleRatio fails
+   */
   public static String sortAndJoin(List<String> col, String sep) {
     col.sort();
-
     return String.join(col, '');
   }
 

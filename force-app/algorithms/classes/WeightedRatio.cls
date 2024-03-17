@@ -26,12 +26,14 @@ public class WeightedRatio extends BasicAlgorithm {
     Double lenRatio = ((Double) Math.max(len1, len2)) / Math.min(len1, len2);
 
     // if strings are similar length don't use partials
-    if (lenRatio < 1.5)
+    if (lenRatio < 1.5) {
       tryPartials = false;
+    }
 
     // if one string is much shorter than the other
-    if (lenRatio > 8)
+    if (lenRatio > 8) {
       partialScale = .6;
+    }
 
     if (tryPartials) {
       Double partial = FuzzySearch.partialRatio(s1, s2) * partialScale;
