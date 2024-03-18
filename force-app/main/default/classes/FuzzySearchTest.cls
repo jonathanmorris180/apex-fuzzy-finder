@@ -56,7 +56,8 @@ public class FuzzySearchTest {
     );
     Integer result2 = FuzzySearch.tokenSortRatio(
       'fuzzy was a bear',
-      'fuzzy fuzzy was a bear'
+      'fuzzy fuzzy was a bear',
+      new NoProcessToStringFunction()
     );
     System.assertEquals(84, result1, TEST_ERROR);
     System.assertEquals(84, result2, TEST_ERROR);
@@ -70,7 +71,8 @@ public class FuzzySearchTest {
     );
     Integer result2 = FuzzySearch.tokenSortPartialRatio(
       'mvn',
-      'wwwwww.mavencentral.comm'
+      'wwwwww.mavencentral.comm',
+      new NoProcessToStringFunction()
     );
     System.assertEquals(67, result1, TEST_ERROR);
     System.assertEquals(67, result2, TEST_ERROR);
@@ -146,35 +148,59 @@ public class FuzzySearchTest {
 
   @isTest
   static void itExtractsSorted() {
-    List<ExtractedResult> results = FuzzySearch.extractSorted(
+    List<ExtractedResult> result1 = FuzzySearch.extractSorted(
       'goolge',
       COMPANY_NAMES
     );
-    System.assertEquals(
-      COMPANY_NAMES.size(),
-      results.size(),
-      'It should return all results'
+    List<ExtractedResult> result2 = FuzzySearch.extractSorted(
+      'goolge',
+      new Set<String>(COMPANY_NAMES)
     );
-    System.assertEquals(
-      'google',
-      results[0].getString(),
-      'It should return the most similar result first'
+    List<BoundExtractedResult> result3 = FuzzySearch.extractSorted(
+      'goolge',
+      COMPANY_NAMES,
+      new NoProcessToStringFunction()
     );
-    System.assertEquals(
-      'googleplus',
-      results[1].getString(),
-      'The second most similar result should be googleplus'
+    List<BoundExtractedResult> result4 = FuzzySearch.extractSorted(
+      'goolge',
+      new Set<String>(COMPANY_NAMES),
+      new NoProcessToStringFunction()
     );
-    System.assertEquals(
-      83,
-      results[0].getScore(),
-      'The result for google should have a score of 83'
-    );
-    System.assertEquals(
-      75,
-      results[1].getScore(),
-      'The result for googleplus should have a score of 75'
-    );
+    for (
+      List<IExtractedResult> result : new List<List<IExtractedResult>>{
+        result1,
+        result2,
+        result3,
+        result4
+      }
+    ) {
+      System.debug('current result: ' + result);
+      System.assertEquals(
+        COMPANY_NAMES.size(),
+        result.size(),
+        'It should return all results'
+      );
+      System.assertEquals(
+        'google',
+        result[0].getString(),
+        'It should return the most similar result first'
+      );
+      System.assertEquals(
+        'googleplus',
+        result[1].getString(),
+        'The second most similar result should be googleplus'
+      );
+      System.assertEquals(
+        83,
+        result[0].getScore(),
+        'The result for google should have a score of 83'
+      );
+      System.assertEquals(
+        75,
+        result[1].getScore(),
+        'The result for googleplus should have a score of 75'
+      );
+    }
   }
 
   @isTest
@@ -204,8 +230,20 @@ public class FuzzySearchTest {
       new Set<String>(COMPANY_NAMES),
       3
     );
+    List<BoundExtractedResult> result3 = FuzzySearch.extractTop(
+      'goolge',
+      COMPANY_NAMES,
+      new NoProcessToStringFunction(),
+      3
+    );
+    List<BoundExtractedResult> result4 = FuzzySearch.extractTop(
+      'goolge',
+      new Set<String>(COMPANY_NAMES),
+      new NoProcessToStringFunction(),
+      3
+    );
     for (
-      List<ExtractedResult> result : new List<List<ExtractedResult>>{
+      List<IExtractedResult> result : new List<List<IExtractedResult>>{
         result1,
         result2
       }
@@ -253,8 +291,24 @@ public class FuzzySearchTest {
       3,
       80
     );
+    List<BoundExtractedResult> result3 = FuzzySearch.extractTop(
+      'goolge',
+      COMPANY_NAMES,
+      new NoProcessToStringFunction(),
+      new SimpleRatio(),
+      3,
+      80
+    );
+    List<BoundExtractedResult> result4 = FuzzySearch.extractTop(
+      'goolge',
+      new Set<String>(COMPANY_NAMES),
+      new NoProcessToStringFunction(),
+      new SimpleRatio(),
+      3,
+      80
+    );
     for (
-      List<ExtractedResult> result : new List<List<ExtractedResult>>{
+      List<IExtractedResult> result : new List<List<IExtractedResult>>{
         result1,
         result2
       }
@@ -289,8 +343,22 @@ public class FuzzySearchTest {
       3,
       0
     );
+    List<BoundExtractedResult> result3 = FuzzySearch.extractTop(
+      'goolge',
+      COMPANY_NAMES,
+      new NoProcessToStringFunction(),
+      3,
+      0
+    );
+    List<BoundExtractedResult> result4 = FuzzySearch.extractTop(
+      'goolge',
+      new Set<String>(COMPANY_NAMES),
+      new NoProcessToStringFunction(),
+      3,
+      0
+    );
     for (
-      List<ExtractedResult> result : new List<List<ExtractedResult>>{
+      List<IExtractedResult> result : new List<List<IExtractedResult>>{
         result1,
         result2
       }
@@ -335,8 +403,22 @@ public class FuzzySearchTest {
       new SimpleRatio(),
       3
     );
+    List<BoundExtractedResult> result3 = FuzzySearch.extractTop(
+      'goolge',
+      COMPANY_NAMES,
+      new NoProcessToStringFunction(),
+      new SimpleRatio(),
+      3
+    );
+    List<BoundExtractedResult> result4 = FuzzySearch.extractTop(
+      'goolge',
+      new Set<String>(COMPANY_NAMES),
+      new NoProcessToStringFunction(),
+      new SimpleRatio(),
+      3
+    );
     for (
-      List<ExtractedResult> result : new List<List<ExtractedResult>>{
+      List<IExtractedResult> result : new List<List<IExtractedResult>>{
         result1,
         result2
       }

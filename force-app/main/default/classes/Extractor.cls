@@ -202,7 +202,7 @@ public class Extractor {
   ) {
     List<ExtractedResult> best = extractWithoutOrder(query, choices, func);
     best.sort();
-    best = this.toExtractedResult(Collections.reverse(best)); // TODO: Convert to Utils method
+    best = this.toExtractedResult(Collections.reverse(best));
 
     return best;
   }
@@ -214,7 +214,7 @@ public class Extractor {
   ) {
     List<ExtractedResult> best = extractWithoutOrder(query, choices, func);
     best.sort();
-    this.toExtractedResult(Collections.reverse(best));
+    best = this.toExtractedResult(Collections.reverse(best));
 
     return best;
   }
@@ -242,7 +242,7 @@ public class Extractor {
       func
     );
     best.sort();
-    Collections.reverse(best);
+    best = this.toBoundExtractedResult(Collections.reverse(best));
 
     return best;
   }
@@ -260,7 +260,7 @@ public class Extractor {
       func
     );
     best.sort();
-    Collections.reverse(best);
+    best = this.toBoundExtractedResult(Collections.reverse(best));
 
     return best;
   }
@@ -317,6 +317,18 @@ public class Extractor {
     return result;
   }
 
+  private List<BoundExtractedResult> toBoundExtractedResult(
+    List<Comparable> items
+  ) {
+    List<BoundExtractedResult> result = new List<BoundExtractedResult>();
+    for (Comparable c : items) {
+      if (c instanceof BoundExtractedResult) {
+        result.add((BoundExtractedResult) c);
+      }
+    }
+    return result;
+  }
+
   /**
    * Creates a <b>sorted</b> list of {@link ExtractedResult} which contain the
    * top @param limit most similar choices
@@ -342,11 +354,10 @@ public class Extractor {
       func
     );
 
-    List<BoundExtractedResult> results = (List<BoundExtractedResult>) Utils.findTopKHeap(
-      best,
-      numChoices
+    List<BoundExtractedResult> results = this.toBoundExtractedResult(
+      Utils.findTopKHeap(best, numChoices)
     );
-    results = (List<BoundExtractedResult>) Collections.reverse(results);
+    results = this.toBoundExtractedResult(Collections.reverse(results));
 
     return results;
   }
@@ -365,11 +376,10 @@ public class Extractor {
       func
     );
 
-    List<BoundExtractedResult> results = (List<BoundExtractedResult>) Utils.findTopKHeap(
-      best,
-      numChoices
+    List<BoundExtractedResult> results = this.toBoundExtractedResult(
+      Utils.findTopKHeap(best, numChoices)
     );
-    results = (List<BoundExtractedResult>) Collections.reverse(results);
+    results = this.toBoundExtractedResult(Collections.reverse(results));
 
     return results;
   }
