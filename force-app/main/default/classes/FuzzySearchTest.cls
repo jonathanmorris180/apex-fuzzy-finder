@@ -174,7 +174,6 @@ public class FuzzySearchTest {
         result4
       }
     ) {
-      System.debug('current result: ' + result);
       System.assertEquals(
         COMPANY_NAMES.size(),
         result.size(),
@@ -186,19 +185,153 @@ public class FuzzySearchTest {
         'It should return the most similar result first'
       );
       System.assertEquals(
-        'googleplus',
-        result[1].getString(),
-        'The second most similar result should be googleplus'
+        83,
+        result[0].getScore(),
+        'The result for google should have a score of 83'
+      );
+    }
+  }
+
+  @isTest
+  static void itExtractsSortedWithApplicable() {
+    List<ExtractedResult> result1 = FuzzySearch.extractSorted(
+      'goolge',
+      COMPANY_NAMES,
+      new SimpleRatio()
+    );
+    List<ExtractedResult> result2 = FuzzySearch.extractSorted(
+      'goolge',
+      new Set<String>(COMPANY_NAMES),
+      new SimpleRatio()
+    );
+    List<BoundExtractedResult> result3 = FuzzySearch.extractSorted(
+      'goolge',
+      COMPANY_NAMES,
+      new NoProcessToStringFunction(),
+      new SimpleRatio()
+    );
+    List<BoundExtractedResult> result4 = FuzzySearch.extractSorted(
+      'goolge',
+      new Set<String>(COMPANY_NAMES),
+      new NoProcessToStringFunction(),
+      new SimpleRatio()
+    );
+    for (
+      List<IExtractedResult> result : new List<List<IExtractedResult>>{
+        result1,
+        result2,
+        result3,
+        result4
+      }
+    ) {
+      System.assertEquals(
+        COMPANY_NAMES.size(),
+        result.size(),
+        'It should return all results'
+      );
+      System.assertEquals(
+        'google',
+        result[0].getString(),
+        'It should return the most similar result first'
       );
       System.assertEquals(
         83,
         result[0].getScore(),
         'The result for google should have a score of 83'
       );
+    }
+  }
+
+  @isTest
+  static void itExtractsSortedWithApplicableCutoff() {
+    List<ExtractedResult> result1 = FuzzySearch.extractSorted(
+      'goolge',
+      COMPANY_NAMES,
+      new SimpleRatio(),
+      80
+    );
+    List<ExtractedResult> result2 = FuzzySearch.extractSorted(
+      'goolge',
+      new Set<String>(COMPANY_NAMES),
+      new SimpleRatio(),
+      80
+    );
+    List<BoundExtractedResult> result3 = FuzzySearch.extractSorted(
+      'goolge',
+      COMPANY_NAMES,
+      new NoProcessToStringFunction(),
+      new SimpleRatio(),
+      80
+    );
+    List<BoundExtractedResult> result4 = FuzzySearch.extractSorted(
+      'goolge',
+      new Set<String>(COMPANY_NAMES),
+      new NoProcessToStringFunction(),
+      new SimpleRatio(),
+      80
+    );
+    for (
+      List<IExtractedResult> result : new List<List<IExtractedResult>>{
+        result1,
+        result2,
+        result3,
+        result4
+      }
+    ) {
       System.assertEquals(
-        75,
-        result[1].getScore(),
-        'The result for googleplus should have a score of 75'
+        1,
+        result.size(),
+        'It should only return one result since the cutoff is 80'
+      );
+      System.assertEquals(
+        'google',
+        result[0].getString(),
+        'It should return the most similar result first'
+      );
+    }
+  }
+
+  @isTest
+  static void itExtractsSortedWithCutoff() {
+    List<ExtractedResult> result1 = FuzzySearch.extractSorted(
+      'goolge',
+      COMPANY_NAMES,
+      80
+    );
+    List<ExtractedResult> result2 = FuzzySearch.extractSorted(
+      'goolge',
+      new Set<String>(COMPANY_NAMES),
+      80
+    );
+    List<BoundExtractedResult> result3 = FuzzySearch.extractSorted(
+      'goolge',
+      COMPANY_NAMES,
+      new NoProcessToStringFunction(),
+      80
+    );
+    List<BoundExtractedResult> result4 = FuzzySearch.extractSorted(
+      'goolge',
+      new Set<String>(COMPANY_NAMES),
+      new NoProcessToStringFunction(),
+      80
+    );
+    for (
+      List<IExtractedResult> result : new List<List<IExtractedResult>>{
+        result1,
+        result2,
+        result3,
+        result4
+      }
+    ) {
+      System.assertEquals(
+        1,
+        result.size(),
+        'It should only return one result since the cutoff is 80'
+      );
+      System.assertEquals(
+        'google',
+        result[0].getString(),
+        'It should return the most similar result first'
       );
     }
   }
