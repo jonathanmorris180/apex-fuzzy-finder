@@ -1,5 +1,5 @@
 <p align="center">
-  <h1 align="center">apex-fuzzy-matcher</h2>
+  <h1 align="center">apex-fuzzy-finder</h2>
 </p>
 
 <div align="center">
