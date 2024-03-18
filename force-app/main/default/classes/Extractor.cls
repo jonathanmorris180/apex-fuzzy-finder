@@ -214,7 +214,7 @@ public class Extractor {
   ) {
     List<ExtractedResult> best = extractWithoutOrder(query, choices, func);
     best.sort();
-    Collections.reverse(best);
+    this.toExtractedResult(Collections.reverse(best));
 
     return best;
   }
@@ -299,11 +299,10 @@ public class Extractor {
   ) {
     List<ExtractedResult> best = extractWithoutOrder(query, choices, func);
 
-    List<ExtractedResult> results = (List<ExtractedResult>) Utils.findTopKHeap(
-      best,
-      numChoices
+    List<ExtractedResult> results = this.toExtractedResult(
+      Utils.findTopKHeap(best, numChoices)
     );
-    results = (List<ExtractedResult>) Collections.reverse(results);
+    results = this.toExtractedResult(Collections.reverse(results));
 
     return results;
   }
