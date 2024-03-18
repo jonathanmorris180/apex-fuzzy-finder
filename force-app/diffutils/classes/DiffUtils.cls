@@ -830,7 +830,7 @@ public class DiffUtils {
     return 0;
   }
 
-  public static double getRatio(String s1, String s2) {
+  public static Double getRatio(String s1, String s2) {
     Integer len1 = s1.length();
     Integer len2 = s2.length();
     Integer lensum = len1 + len2;
