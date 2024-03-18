@@ -23,12 +23,22 @@ public class DiffUtilsTest {
   }
 
   @isTest
+  static void itGetsTheLevEditDistance() {
+    String a = 'kitten';
+    String b = 'sitting';
+    System.assertEquals(
+      3,
+      DiffUtils.levEditDistance(a, b, 0),
+      'The Levenshtein distance should be 3 with an xcost of 0'
+    );
+  }
+
+  @isTest
   static void itGetsMatchingBlocks() {
     String a = 'similar';
     String b = 'somewhr';
     List<MatchingBlock> matchingBlocks = DiffUtils.getMatchingBlocks(a, b);
     // Matching blocks take the form [indexFirstString, indexSecondString, lengthOfMatch]
-    System.debug('matchingBlocks: ' + matchingBlocks);
     MatchingBlock match1 = new MatchingBlock();
     MatchingBlock match2 = new MatchingBlock();
     MatchingBlock match3 = new MatchingBlock();
