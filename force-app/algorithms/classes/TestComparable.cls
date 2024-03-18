@@ -13,4 +13,13 @@ public class TestComparable implements Comparable {
     }
     return other.ratio > this.ratio ? -1 : 1;
   }
+
+  public Boolean equals(Object o) {
+    TestComparable other = (TestComparable) o;
+    return this.ratio == other.ratio && this.name == other.name;
+  }
+
+  public Integer hashCode() {
+    return this.ratio.hashCode();
+  }
 }

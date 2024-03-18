@@ -93,14 +93,10 @@ public class UtilsTest {
       'Only the top 3 comparables should be returned'
     );
 
-    for (Integer i = 0; i < expected.size(); i++) {
-      TestComparable tc = (TestComparable) expected[i];
-      TestComparable actualTc = (TestComparable) actual[i];
-      System.assertEquals(
-        tc.name,
-        actualTc.name,
-        'Comparable was not returned in the correct order'
-      );
-    }
+    System.assertEquals(
+      expected,
+      actual,
+      'The top 3 comparables should be returned in the correct order'
+    );
   }
 }
