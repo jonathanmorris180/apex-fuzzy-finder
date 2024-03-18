@@ -125,25 +125,192 @@ public class FuzzySearchTest {
 
   @isTest
   static void itExtractsAll() {
-    List<ExtractedResult> results = FuzzySearch.extractAll(
+    List<ExtractedResult> result1 = FuzzySearch.extractAll(
       'goolge',
       COMPANY_NAMES
     );
-    System.assertEquals(
-      COMPANY_NAMES.size(),
-      results.size(),
-      'It should return all results'
+    List<ExtractedResult> result2 = FuzzySearch.extractAll(
+      'goolge',
+      new Set<String>(COMPANY_NAMES)
     );
-    System.assertEquals(
-      'google',
-      results[0].getString(),
-      'It should return the most similar result first'
+    List<BoundExtractedResult> result3 = FuzzySearch.extractAll(
+      'goolge',
+      COMPANY_NAMES,
+      new NoProcessToStringFunction()
     );
-    System.assertEquals(
-      83,
-      results[0].getScore(),
-      'The result for google should have a score of 83'
+    List<BoundExtractedResult> result4 = FuzzySearch.extractAll(
+      'goolge',
+      new Set<String>(COMPANY_NAMES),
+      new NoProcessToStringFunction()
     );
+    for (
+      List<IExtractedResult> result : new List<List<IExtractedResult>>{
+        result1,
+        result2,
+        result3,
+        result4
+      }
+    ) {
+      System.assertEquals(
+        COMPANY_NAMES.size(),
+        result.size(),
+        'It should return all results'
+      );
+      System.assertEquals(
+        'google',
+        result[0].getString(),
+        'It should return the most similar result first'
+      );
+      System.assertEquals(
+        83,
+        result[0].getScore(),
+        'The result for google should have a score of 83'
+      );
+    }
+  }
+
+  @isTest
+  static void itExtractsAllWithApplicable() {
+    List<ExtractedResult> result1 = FuzzySearch.extractAll(
+      'goolge',
+      COMPANY_NAMES,
+      new SimpleRatio()
+    );
+    List<ExtractedResult> result2 = FuzzySearch.extractAll(
+      'goolge',
+      new Set<String>(COMPANY_NAMES),
+      new SimpleRatio()
+    );
+    List<BoundExtractedResult> result3 = FuzzySearch.extractAll(
+      'goolge',
+      COMPANY_NAMES,
+      new NoProcessToStringFunction(),
+      new SimpleRatio()
+    );
+    List<BoundExtractedResult> result4 = FuzzySearch.extractAll(
+      'goolge',
+      new Set<String>(COMPANY_NAMES),
+      new NoProcessToStringFunction(),
+      new SimpleRatio()
+    );
+    for (
+      List<IExtractedResult> result : new List<List<IExtractedResult>>{
+        result1,
+        result2,
+        result3,
+        result4
+      }
+    ) {
+      System.assertEquals(
+        COMPANY_NAMES.size(),
+        result.size(),
+        'It should return all results'
+      );
+      System.assertEquals(
+        'google',
+        result[0].getString(),
+        'It should return the most similar result first'
+      );
+      System.assertEquals(
+        83,
+        result[0].getScore(),
+        'The result for google should have a score of 83'
+      );
+    }
+  }
+
+  @isTest
+  static void itExtractsAllWithApplicableCutoff() {
+    List<ExtractedResult> result1 = FuzzySearch.extractAll(
+      'goolge',
+      COMPANY_NAMES,
+      new SimpleRatio(),
+      80
+    );
+    List<ExtractedResult> result2 = FuzzySearch.extractAll(
+      'goolge',
+      new Set<String>(COMPANY_NAMES),
+      new SimpleRatio(),
+      80
+    );
+    List<BoundExtractedResult> result3 = FuzzySearch.extractAll(
+      'goolge',
+      COMPANY_NAMES,
+      new NoProcessToStringFunction(),
+      new SimpleRatio(),
+      80
+    );
+    List<BoundExtractedResult> result4 = FuzzySearch.extractAll(
+      'goolge',
+      new Set<String>(COMPANY_NAMES),
+      new NoProcessToStringFunction(),
+      new SimpleRatio(),
+      80
+    );
+    for (
+      List<IExtractedResult> result : new List<List<IExtractedResult>>{
+        result1,
+        result2,
+        result3,
+        result4
+      }
+    ) {
+      System.assertEquals(
+        1,
+        result.size(),
+        'It should only return one result since the cutoff is 80'
+      );
+      System.assertEquals(
+        'google',
+        result[0].getString(),
+        'It should return the most similar result first'
+      );
+    }
+  }
+
+  @isTest
+  static void itExtractsAllWithCutoff() {
+    List<ExtractedResult> result1 = FuzzySearch.extractAll(
+      'goolge',
+      COMPANY_NAMES,
+      80
+    );
+    List<ExtractedResult> result2 = FuzzySearch.extractAll(
+      'goolge',
+      new Set<String>(COMPANY_NAMES),
+      80
+    );
+    List<BoundExtractedResult> result3 = FuzzySearch.extractAll(
+      'goolge',
+      COMPANY_NAMES,
+      new NoProcessToStringFunction(),
+      80
+    );
+    List<BoundExtractedResult> result4 = FuzzySearch.extractAll(
+      'goolge',
+      new Set<String>(COMPANY_NAMES),
+      new NoProcessToStringFunction(),
+      80
+    );
+    for (
+      List<IExtractedResult> result : new List<List<IExtractedResult>>{
+        result1,
+        result2,
+        result3,
+        result4
+      }
+    ) {
+      System.assertEquals(
+        1,
+        result.size(),
+        'It should only return one result since the cutoff is 80'
+      );
+      System.assertEquals(
+        'google',
+        result[0].getString(),
+        'It should return the most similar result first'
+      );
+    }
   }
 
   @isTest
@@ -338,17 +505,75 @@ public class FuzzySearchTest {
 
   @isTest
   static void itExtractsOne() {
-    ExtractedResult result = FuzzySearch.extractOne('twiter', COMPANY_NAMES);
-    System.assertEquals(
-      'twitter',
-      result.getString(),
-      'It should return the most similar result'
+    ExtractedResult result1 = FuzzySearch.extractOne('twiter', COMPANY_NAMES);
+    ExtractedResult result2 = FuzzySearch.extractOne(
+      'twiter',
+      new Set<String>(COMPANY_NAMES)
     );
-    System.assertEquals(
-      92,
-      result.getScore(),
-      'The result for twitter should have a score of 92'
+    BoundExtractedResult result3 = FuzzySearch.extractOne(
+      'twiter',
+      COMPANY_NAMES,
+      new NoProcessToStringFunction()
     );
+    BoundExtractedResult result4 = FuzzySearch.extractOne(
+      'twiter',
+      new Set<String>(COMPANY_NAMES),
+      new NoProcessToStringFunction()
+    );
+    for (
+      IExtractedResult result : new List<IExtractedResult>{ result1, result2 }
+    ) {
+      System.assertEquals(
+        'twitter',
+        result.getString(),
+        'It should return the most similar result'
+      );
+      System.assertEquals(
+        92,
+        result.getScore(),
+        'The result for twitter should have a score of 92'
+      );
+    }
+  }
+
+  @isTest
+  static void itExtractsOneWithApplicable() {
+    ExtractedResult result1 = FuzzySearch.extractOne(
+      'twiter',
+      COMPANY_NAMES,
+      new SimpleRatio()
+    );
+    ExtractedResult result2 = FuzzySearch.extractOne(
+      'twiter',
+      new Set<String>(COMPANY_NAMES),
+      new SimpleRatio()
+    );
+    BoundExtractedResult result3 = FuzzySearch.extractOne(
+      'twiter',
+      COMPANY_NAMES,
+      new NoProcessToStringFunction(),
+      new SimpleRatio()
+    );
+    BoundExtractedResult result4 = FuzzySearch.extractOne(
+      'twiter',
+      new Set<String>(COMPANY_NAMES),
+      new NoProcessToStringFunction(),
+      new SimpleRatio()
+    );
+    for (
+      IExtractedResult result : new List<IExtractedResult>{ result1, result2 }
+    ) {
+      System.assertEquals(
+        'twitter',
+        result.getString(),
+        'It should return the most similar result'
+      );
+      System.assertEquals(
+        92,
+        result.getScore(),
+        'The result for twitter should have a score of 92'
+      );
+    }
   }
 
   @isTest
