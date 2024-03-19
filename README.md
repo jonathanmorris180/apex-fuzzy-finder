@@ -8,7 +8,7 @@
 
 ## 📋 Installation
 
-Can be easily installed as an unlocked package via this link.
+Can be easily installed as an unlocked package. See the latest [release](https://github.com/jonathanmorris180/apex-fuzzy-finder/releases) for the installation link.
 
 ## ☄ Usage
 
