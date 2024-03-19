@@ -2,11 +2,16 @@
   "packageDirectories": [
     {
       "path": "force-app",
-      "default": true
+      "default": true,
+      "package": "Apex Fuzzy Finder",
+      "versionNumber": "1.0.0.NEXT",
+      "versionDescription": ""
     }
   ],
-  "name": "apex-fuzzy-matcher",
-  "namespace": "",
-  "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "59.0"
+  "name": "Apex Fuzzy Finder",
+  "namespace": "jmor",
+  "sourceApiVersion": "59.0",
+  "packageAliases": {
+    "Apex Fuzzy Finder": "0Hoak00000002TFCAY"
+  }
 }

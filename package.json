@@ -13,7 +13,9 @@
     "prettier": "prettier --write \"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}\"",
     "prettier:verify": "prettier --list-different \"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}\"",
     "postinstall": "husky install",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "scratch:create": "sf org create scratch -f config/project-scratch-def.json -a fuzzy-finder-scratch-org --duration-days 1 --set-default && sf project deploy start",
+    "test:apex": "sf apex run test -l RunLocalTests -r human --code-coverage --synchronous"
   },
   "devDependencies": {
     "@lwc/eslint-plugin-lwc": "^1.1.2",

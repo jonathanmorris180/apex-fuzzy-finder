@@ -1,0 +1,31 @@
+name: Test
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - name: Install dependencies
+        run: |
+          npm install
+          npm install @salesforce/cli --global
+      - name: Authenticate to DevHub and create scratch org
+        run: |
+          sf org login sfdx-url -a devhub -d -f <(echo "${{ secrets.SFDX_DEVHUB }}")
+          npm run scratch:create
+      - name: Run unit tests
+        run: npm run test:apex
+      - name: Delete scratch org
+        run: |
+          sf org delete scratch --no-prompt

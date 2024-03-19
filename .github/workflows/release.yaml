@@ -1,0 +1,31 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - name: Install dependencies
+        run: |
+          npm install
+          npm install @salesforce/cli --global
+      - name: Authenticate to DevHub
+        run: |
+          sf org login sfdx-url -a devhub -d -f <(echo "${{ secrets.SFDX_DEVHUB }}")
+      - name: Create package
+        run: |
+          sf package version create --package "Apex Fuzzy Finder" --installation-key apexfuzzyfinder --wait 20 --code-coverage --skip-ancestor-check
+      - name: Promote package
+        run: |
+          sf package version promote -n -p $(sf package version list -p "Apex Fuzzy Finder" -o CreatedDate --concise | tail -1 | awk '{print $3}')
