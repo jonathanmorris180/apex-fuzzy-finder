@@ -11,13 +11,12 @@ public class ExtractedResult implements IExtractedResult, Comparable {
 
   public Integer compareTo(Object o) {
     if (o instanceof ExtractedResult) {
-      return this.compare(this.getScore(), ((ExtractedResult) o).getScore()); // TODO: Convert to Utils method
+      return Collections.compare(
+        this.getScore(),
+        ((ExtractedResult) o).getScore()
+      );
     }
     return 0;
-  }
-
-  public Integer compare(Integer a, Integer b) {
-    return a == b ? 0 : (a < b ? -1 : 1);
   }
 
   public String getString() {

@@ -31,10 +31,10 @@ public class BoundExtractedResult implements IExtractedResult, Comparable {
 
   public Integer compareTo(Object o) {
     if (o instanceof BoundExtractedResult) {
-      return this.compare(
+      return Collections.compare(
         this.getScore(),
         ((BoundExtractedResult) o).getScore()
-      ); // TODO: Convert to Utils method
+      );
     }
     return 0;
   }

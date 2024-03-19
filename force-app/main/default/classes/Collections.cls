@@ -40,4 +40,8 @@ public class Collections {
     }
     return max;
   }
+
+  public static Integer compare(Integer a, Integer b) {
+    return a == b ? 0 : (a < b ? -1 : 1);
+  }
 }
