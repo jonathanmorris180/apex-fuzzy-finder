@@ -1,7 +1,6 @@
 {
-  "orgName": "jonathanmorris company",
+  "orgName": "Fuzzy Finder Scratch",
   "edition": "Developer",
-  "features": ["EnableSetPasswordInApi"],
   "settings": {
     "lightningExperienceSettings": {
       "enableS1DesktopEnabled": true
