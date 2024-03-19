@@ -12,6 +12,7 @@
   "namespace": "jmor",
   "sourceApiVersion": "59.0",
   "packageAliases": {
-    "Apex Fuzzy Finder": "0Hoak00000002TFCAY"
+    "Apex Fuzzy Finder": "0Hoak00000002TFCAY",
+    "Apex Fuzzy Finder@1.0.0-1": "04tak0000000XtdAAE"
   }
 }
