@@ -1,12 +1,12 @@
-name: Test
+name: Release
 
 on:
-  pull_request:
+  push:
     branches:
       - main
 
 jobs:
-  test:
+  release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,12 +20,12 @@ jobs:
         run: |
           npm install
           npm install @salesforce/cli --global
-      - name: Authenticate to DevHub and create scratch org
+      - name: Authenticate to DevHub
         run: |
           sf org login sfdx-url -a devhub -d -f <(echo "${{ secrets.SFDX_DEVHUB }}")
-          npm run scratch:create
-      - name: Run unit tests
-        run: npm run test:apex
-      - name: Delete scratch org
+      - name: Create package
         run: |
-          sf org delete scratch --no-prompt
+          sf package version create --package "Apex Fuzzy Finder" --installation-key apexfuzzyfinder --wait 20 --code-coverage --skip-ancestor-check
+      - name: Promote package
+        run: |
+          sf package version promote -n -p $(sf package version list -p "Apex Fuzzy Finder" -o CreatedDate --concise | tail -1 | awk '{print $3}')
