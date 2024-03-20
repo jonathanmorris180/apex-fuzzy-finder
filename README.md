@@ -1,4 +1,4 @@
-[![Build](https://github.com/jonathanmorris180/apex-fuzzy-finder/actions/workflows/tests.yaml/badge.svg)](https://github.com/jonathanmorris180/apex-fuzzy-finder/actions/workflows/tests.yaml)
+[![Build](https://github.com/jonathanmorris180/apex-fuzzy-finder/actions/workflows/build.yaml/badge.svg)](https://github.com/jonathanmorris180/apex-fuzzy-finder/actions/workflows/build.yaml)
 [![Deploy](https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png)](https://login.salesforce.com/packaging/installPackage.apexp?p0=04tak0000000ZVdAAM)
 
 <p align="center">
