@@ -27,5 +27,6 @@ jobs:
       - name: Run unit tests
         run: npm run test:apex
       - name: Delete scratch org
+        if: always()
         run: |
           sf org delete scratch --no-prompt

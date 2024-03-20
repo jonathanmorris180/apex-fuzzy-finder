@@ -2,16 +2,18 @@
   "packageDirectories": [
     {
       "path": "force-app",
-      "default": true,
       "package": "Apex Fuzzy Finder",
-      "versionNumber": "1.0.0.NEXT",
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "default": true,
       "versionDescription": ""
     }
   ],
   "name": "Apex Fuzzy Finder",
-  "namespace": "jmor",
+  "namespace": "",
   "sourceApiVersion": "59.0",
   "packageAliases": {
-    "Apex Fuzzy Finder": "0Hoak00000002TFCAY"
+    "Apex Fuzzy Finder": "0Hoak00000002Y5CAI",
+    "Apex Fuzzy Finder@0.1.0-1": "04tak0000000ZVdAAM"
   }
 }

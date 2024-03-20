@@ -1,18 +1,21 @@
+[![Build](https://github.com/jonathanmorris180/apex-fuzzy-finder/actions/workflows/tests.yaml/badge.svg)](https://github.com/jonathanmorris180/apex-fuzzy-finder/actions/workflows/tests.yaml)
+[![Deploy](https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png)](https://login.salesforce.com/packaging/installPackage.apexp?p0=04tak0000000ZVdAAM)
+
 <p align="center">
   <h1 align="center">apex-fuzzy-finder</h2>
 </p>
 
 <div align="center">
-    Apex port of the <a href="https://github.com/xdrop/fuzzywuzzy">me.xdrop.fuzzywuzzy</a> apex fuzzy-finding library, which itself is a port of seatgeek's <a href="https://github.com/seatgeek/thefuzz">thefuzz</a> python library.
+    Apex port of the <a href="https://github.com/xdrop/fuzzywuzzy">me.xdrop.fuzzywuzzy</a> fuzzy-finding library, which itself is a port of seatgeek's <a href="https://github.com/seatgeek/thefuzz">thefuzz</a> python library.
 </div>
 
 ## 📋 Installation
 
-Can be easily installed as an unlocked package via this link.
+Can be easily installed as an unlocked package. See the latest [release](https://github.com/jonathanmorris180/apex-fuzzy-finder/releases) for the installation link.
 
 ## ☄ Usage
 
-All interactions with this library take place through the `FuzzySearch` class.
+All interactions with this library should take place through the `FuzzySearch` class's static methods.
 
 > **Note**: Performance on large amounts of data can be slow in the Apex implementation. In particular, you may want to avoid using extract\* methods. Experiment instead with iterating over your data and using direct string comparisons via \*ratio and token\* methods.
 
