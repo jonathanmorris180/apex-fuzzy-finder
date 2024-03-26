@@ -71,6 +71,6 @@ FuzzySearch.extractAll('goolge', new List<String>{'google', 'bing', 'facebook', 
 
 ```apex
 FuzzySearch.extractSorted('goolge', new List<String>{'google', 'bing', 'facebook', 'linkedin', 'twitter', 'googleplus', 'bingnews', 'plexoogl'}); // [(string: google, score: 83, index: 0), (string: googleplus, score: 63, index: 5), (string: plexoogl, score: 43, index: 7), (string: facebook, score: 29, index: 2), (string: linkedin, score: 29, index: 3), (string: bingnews, score: 29, index: 6), (string: bing, score: 20, index: 1), (string: twitter, score: 15, index: 4)]
-// Only return results > 3
+// Only return a maximum of 3 results
 FuzzySearch.extractSorted('goolge', new List<String>{'google', 'bing', 'facebook', 'linkedin', 'twitter', 'googleplus', 'bingnews', 'plexoogl'}, 3); // [(string: google, score: 83, index: 0), (string: googleplus, score: 63, index: 5), (string: plexoogl, score: 43, index: 7)]
 ```
