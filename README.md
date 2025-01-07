@@ -1,5 +1,5 @@
 [![Build](https://github.com/jonathanmorris180/apex-fuzzy-finder/actions/workflows/build.yaml/badge.svg)](https://github.com/jonathanmorris180/apex-fuzzy-finder/actions/workflows/build.yaml)
-[![Deploy](https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png)](https://login.salesforce.com/packaging/installPackage.apexp?p0=04tak0000000ZVdAAM)
+[![Deploy](https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png)](https://login.salesforce.com/packaging/installPackage.apexp?p0=04tak0000005FRRAA2)
 
 <p align="center">
   <h1 align="center">apex-fuzzy-finder</h2>
