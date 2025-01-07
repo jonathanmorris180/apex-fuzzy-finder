@@ -3,7 +3,7 @@
     {
       "path": "force-app",
       "package": "Apex Fuzzy Finder",
-      "versionNumber": "0.1.0.NEXT",
+      "versionNumber": "0.1.1.NEXT",
       "versionDescription": "",
       "versionName": "ver 0.1"
     }
@@ -13,6 +13,7 @@
   "sourceApiVersion": "59.0",
   "packageAliases": {
     "Apex Fuzzy Finder": "0Hoak0000000NizCAE",
-    "Apex Fuzzy Finder@0.1.0-1": "04tak0000005FPpAAM"
+    "Apex Fuzzy Finder@0.1.0-1": "04tak0000005FPpAAM",
+    "Apex Fuzzy Finder@0.1.1-1": "04tak0000005FRRAA2"
   }
 }
