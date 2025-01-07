@@ -35,7 +35,7 @@ System.debug('Before: ' + System.now());
 Integer highestRatio = 0;
 List<TestComparable> results = new List<TestComparable>();
 for (String s : oppNames) {
-  Integer result = FuzzySearch.tokenSortRatio('tes', s); // Seems to give the best results
+  Integer result = fuzz.FuzzySearch.tokenSortRatio('tes', s); // Seems to give the best results
   results.add(new TestComparable(s, result));
 }
 results.sort();

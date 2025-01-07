@@ -1,5 +1,5 @@
-public class PrimitiveUtils {
-  public static Double max(List<Double> elems) {
+global class PrimitiveUtils {
+  global static Double max(List<Double> elems) {
     if (elems == null || elems.isEmpty()) {
       return 0;
     }
@@ -15,7 +15,7 @@ public class PrimitiveUtils {
     return best;
   }
 
-  public static Integer max(List<Integer> elems) {
+  global static Integer max(List<Integer> elems) {
     if (elems == null || elems.isEmpty()) {
       return 0;
     }

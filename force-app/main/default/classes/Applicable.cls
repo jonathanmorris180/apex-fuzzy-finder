@@ -1,7 +1,7 @@
 /**
  * A ratio/algorithm that can be applied
  */
-public interface Applicable {
+global interface Applicable {
   /**
    * Apply the ratio/algorithm to the input strings
    *

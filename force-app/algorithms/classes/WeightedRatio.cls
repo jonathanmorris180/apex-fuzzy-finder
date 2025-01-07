@@ -1,9 +1,9 @@
-public class WeightedRatio extends BasicAlgorithm {
-  public static final Double UNBASE_SCALE = .95;
-  public static final Double PARTIAL_SCALE = .90;
-  public static final Boolean TRY_PARTIALS = true;
+global class WeightedRatio extends BasicAlgorithm {
+  global static final Double UNBASE_SCALE = .95;
+  global static final Double PARTIAL_SCALE = .90;
+  global static final Boolean TRY_PARTIALS = true;
 
-  public override Integer apply(
+  global override Integer apply(
     String s1,
     String s2,
     ToStringFunction stringProcessor

@@ -22,55 +22,55 @@ All interactions with this library should take place through the `FuzzySearch` c
 #### Simple Ratio
 
 ```apex
-FuzzySearch.ratio('mysmilarstring','myawfullysimilarstirng'); // 72
+fuzz.FuzzySearch.ratio('mysmilarstring','myawfullysimilarstirng'); // 72
 
-FuzzySearch.ratio('mysmilarstring','mysimilarstring'); // 97
+fuzz.FuzzySearch.ratio('mysmilarstring','mysimilarstring'); // 97
 ```
 
 #### Partial Ratio
 
 ```apex
-FuzzySearch.partialRatio('similar', 'somewhresimlrbetweenthisstring'); // 71
+fuzz.FuzzySearch.partialRatio('similar', 'somewhresimlrbetweenthisstring'); // 71
 ```
 
 #### Token Sort Ratio
 
 ```apex
-FuzzySearch.tokenSortPartialRatio('order words out of', 'words out of order'); // 100
-FuzzySearch.tokenSortRatio('order words out of', 'words out of order'); // 100
+fuzz.FuzzySearch.tokenSortPartialRatio('order words out of', 'words out of order'); // 100
+fuzz.FuzzySearch.tokenSortRatio('order words out of', 'words out of order'); // 100
 ```
 
 #### Token Set Ratio
 
 ```apex
-FuzzySearch.tokenSetRatio('fuzzy was a bear', 'fuzzy fuzzy fuzzy bear'); // 100
-FuzzySearch.tokenSetPartialRatio('fuzzy was a bear', 'fuzzy fuzzy fuzzy bear'); // 100
+fuzz.FuzzySearch.tokenSetRatio('fuzzy was a bear', 'fuzzy fuzzy fuzzy bear'); // 100
+fuzz.FuzzySearch.tokenSetPartialRatio('fuzzy was a bear', 'fuzzy fuzzy fuzzy bear'); // 100
 ```
 
 #### Weighted Ratio
 
 ```apex
-FuzzySearch.weightedRatio('The quick brown fox jimps ofver the small lazy dog', 'the quick brown fox jumps over the small lazy dog'); // 97
+fuzz.FuzzySearch.weightedRatio('The quick brown fox jimps ofver the small lazy dog', 'the quick brown fox jumps over the small lazy dog'); // 97
 ```
 
 #### Extract
 
 ```apex
-FuzzySearch.extractOne('cowboys', new List<String>{'Atlanta Falcons', 'New York Jets', 'New York Giants', 'Dallas Cowboys'}); // (string: Dallas Cowboys, score: 90, index: 3)
+fuzz.FuzzySearch.extractOne('cowboys', new List<String>{'Atlanta Falcons', 'New York Jets', 'New York Giants', 'Dallas Cowboys'}); // (string: Dallas Cowboys, score: 90, index: 3)
 ```
 
 ```apex
-FuzzySearch.extractTop('goolge', new List<String>{'google', 'bing', 'facebook', 'linkedin', 'twitter', 'googleplus', 'bingnews', 'plexoogl'}, 3); // [(string: google, score: 83, index: 0), (string: googleplus, score: 63, index:5), (string: plexoogl, score: 43, index: 7)]
+fuzz.FuzzySearch.extractTop('goolge', new List<String>{'google', 'bing', 'facebook', 'linkedin', 'twitter', 'googleplus', 'bingnews', 'plexoogl'}, 3); // [(string: google, score: 83, index: 0), (string: googleplus, score: 63, index:5), (string: plexoogl, score: 43, index: 7)]
 ```
 
 ```apex
-FuzzySearch.extractAll('goolge', new List<String>{'google', 'bing', 'facebook', 'linkedin', 'twitter', 'googleplus', 'bingnews', 'plexoogl'}); // [(string: google, score: 83, index: 0), (string: bing, score: 20, index: 1), (string: facebook, score: 29, index: 2), (string: linkedin, score: 29, index: 3), (string: twitter, score: 15, index: 4), (string: googleplus, score: 63, index: 5), (string: bingnews, score: 29, index: 6), (string: plexoogl, score: 43, index: 7)]
+fuzz.FuzzySearch.extractAll('goolge', new List<String>{'google', 'bing', 'facebook', 'linkedin', 'twitter', 'googleplus', 'bingnews', 'plexoogl'}); // [(string: google, score: 83, index: 0), (string: bing, score: 20, index: 1), (string: facebook, score: 29, index: 2), (string: linkedin, score: 29, index: 3), (string: twitter, score: 15, index: 4), (string: googleplus, score: 63, index: 5), (string: bingnews, score: 29, index: 6), (string: plexoogl, score: 43, index: 7)]
 // Only return results > 40
-FuzzySearch.extractAll('goolge', new List<String>{'google', 'bing', 'facebook', 'linkedin', 'twitter', 'googleplus', 'bingnews', 'plexoogl'}, 40); // [(string: google, score: 83, index: 0), (string: googleplus, score: 63, index: 5), (string: plexoogl, score: 43, index: 7)]
+fuzz.FuzzySearch.extractAll('goolge', new List<String>{'google', 'bing', 'facebook', 'linkedin', 'twitter', 'googleplus', 'bingnews', 'plexoogl'}, 40); // [(string: google, score: 83, index: 0), (string: googleplus, score: 63, index: 5), (string: plexoogl, score: 43, index: 7)]
 ```
 
 ```apex
-FuzzySearch.extractSorted('goolge', new List<String>{'google', 'bing', 'facebook', 'linkedin', 'twitter', 'googleplus', 'bingnews', 'plexoogl'}); // [(string: google, score: 83, index: 0), (string: googleplus, score: 63, index: 5), (string: plexoogl, score: 43, index: 7), (string: facebook, score: 29, index: 2), (string: linkedin, score: 29, index: 3), (string: bingnews, score: 29, index: 6), (string: bing, score: 20, index: 1), (string: twitter, score: 15, index: 4)]
+fuzz.FuzzySearch.extractSorted('goolge', new List<String>{'google', 'bing', 'facebook', 'linkedin', 'twitter', 'googleplus', 'bingnews', 'plexoogl'}); // [(string: google, score: 83, index: 0), (string: googleplus, score: 63, index: 5), (string: plexoogl, score: 43, index: 7), (string: facebook, score: 29, index: 2), (string: linkedin, score: 29, index: 3), (string: bingnews, score: 29, index: 6), (string: bing, score: 20, index: 1), (string: twitter, score: 15, index: 4)]
 // Only return a maximum of 3 results
-FuzzySearch.extractSorted('goolge', new List<String>{'google', 'bing', 'facebook', 'linkedin', 'twitter', 'googleplus', 'bingnews', 'plexoogl'}, 3); // [(string: google, score: 83, index: 0), (string: googleplus, score: 63, index: 5), (string: plexoogl, score: 43, index: 7)]
+fuzz.FuzzySearch.extractSorted('goolge', new List<String>{'google', 'bing', 'facebook', 'linkedin', 'twitter', 'googleplus', 'bingnews', 'plexoogl'}, 3); // [(string: google, score: 83, index: 0), (string: googleplus, score: 63, index: 5), (string: plexoogl, score: 43, index: 7)]
 ```

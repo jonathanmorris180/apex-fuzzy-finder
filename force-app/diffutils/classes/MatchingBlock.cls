@@ -1,9 +1,9 @@
-public class MatchingBlock {
+global class MatchingBlock {
   public Integer spos;
   public Integer dpos;
   public Integer length;
 
-  public override String toString() {
+  global override String toString() {
     return '(' + spos + ',' + dpos + ',' + length + ')';
   }
 }

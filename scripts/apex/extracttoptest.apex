@@ -3,5 +3,5 @@ List<String> oppNames = new List<String>{
 };
 
 System.debug('Before: ' + System.now());
-List<ExtractedResult> results = FuzzySearch.extractTop('Ad Credit', oppNames, 10);
+List<ExtractedResult> results = fuzz.FuzzySearch.extractTop('Ad Credit', oppNames, 10);
 System.debug('After: ' + System.now());

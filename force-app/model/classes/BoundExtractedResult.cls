@@ -1,35 +1,35 @@
-public class BoundExtractedResult implements IExtractedResult, Comparable {
+global class BoundExtractedResult implements IExtractedResult, Comparable {
   private String str;
   private Integer score;
   private Integer index;
 
-  public BoundExtractedResult(String str, Integer score, Integer index) {
+  global BoundExtractedResult(String str, Integer score, Integer index) {
     this.str = str;
     this.score = score;
     this.index = index;
   }
 
-  public String getString() {
+  global String getString() {
     return str;
   }
 
-  public void setString(String str) {
+  global void setString(String str) {
     this.str = str;
   }
 
-  public Integer getScore() {
+  global Integer getScore() {
     return score;
   }
 
-  public Integer getIndex() {
+  global Integer getIndex() {
     return index;
   }
 
-  public override String toString() {
+  global override String toString() {
     return '(string: ' + str + ', score: ' + score + ', index: ' + index + ')';
   }
 
-  public Integer compareTo(Object o) {
+  global Integer compareTo(Object o) {
     if (o instanceof BoundExtractedResult) {
       return Collections.compare(
         this.getScore(),
@@ -39,7 +39,7 @@ public class BoundExtractedResult implements IExtractedResult, Comparable {
     return 0;
   }
 
-  public Integer compare(Integer a, Integer b) {
+  global Integer compare(Integer a, Integer b) {
     return a == b ? 0 : (a < b ? -1 : 1);
   }
 }

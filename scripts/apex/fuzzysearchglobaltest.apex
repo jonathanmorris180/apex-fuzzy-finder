@@ -15,7 +15,7 @@ List<String> moreChoices = new List<String>{
   'Dallas Cowboys'
 };
 
-Integer result = FuzzySearch.ratio(
+Integer result = fuzz.FuzzySearch.ratio(
   'mysimilarstring',
   'mymostsimilarstsdsdring'
 );
@@ -23,34 +23,34 @@ System.debug('result: ' + result);
 
 System.debug(
   'partialRatio ' +
-  FuzzySearch.partialRatio('similar', 'somewhresimlrbetweenthisstring')
+  fuzz.FuzzySearch.partialRatio('similar', 'somewhresimlrbetweenthisstring')
 ); // Should be 71
 System.debug(
   'tokenSortPartialRatio ' +
-  FuzzySearch.tokenSortPartialRatio('mvn', 'wwwwww.mavencentral.comm')
+  fuzz.FuzzySearch.tokenSortPartialRatio('mvn', 'wwwwww.mavencentral.comm')
 ); // Should be 67
 System.debug(
   'tokenSortRatio ' +
-  FuzzySearch.tokenSortRatio('fuzzy was a bear', 'fuzzy fuzzy was a bear')
+  fuzz.FuzzySearch.tokenSortRatio('fuzzy was a bear', 'fuzzy fuzzy was a bear')
 ); // Should be 84
 System.debug(
   'tokenSetRatio ' +
-  FuzzySearch.tokenSetRatio('fuzzy fuzzy fuzzy bear', 'fuzzy was a bear')
+  fuzz.FuzzySearch.tokenSetRatio('fuzzy fuzzy fuzzy bear', 'fuzzy was a bear')
 ); // Should be 100
 System.debug(
   'weightedRatio ' +
-  FuzzySearch.weightedRatio('mvn', 'wwwwww.mavencentral.comm')
+  fuzz.FuzzySearch.weightedRatio('mvn', 'wwwwww.mavencentral.comm')
 ); // Should be 60
-System.debug('extractAll ' + FuzzySearch.extractAll('goolge', choices)); // Should get all of them with the result at index 0 being "google"
-System.debug('extractSorted ' + FuzzySearch.extractSorted('goolge', choices)); // Should get all of them with first result being "google" and second being "googleplus"
+System.debug('extractAll ' + fuzz.FuzzySearch.extractAll('goolge', choices)); // Should get all of them with the result at index 0 being "google"
+System.debug('extractSorted ' + fuzz.FuzzySearch.extractSorted('goolge', choices)); // Should get all of them with first result being "google" and second being "googleplus"
 System.debug(
   'extractOne with SimpleRatio ' +
-  FuzzySearch.extractOne('twiter', choices, new SimpleRatio())
+  fuzz.FuzzySearch.extractOne('twiter', choices, new SimpleRatio())
 ); // Should be "twitter"
-System.debug('extractOne ' + FuzzySearch.extractOne('cowboys', moreChoices)); // Should be "Dallas Cowboys"
+System.debug('extractOne ' + fuzz.FuzzySearch.extractOne('cowboys', moreChoices)); // Should be "Dallas Cowboys"
 
-List<ExtractedResult> results = FuzzySearch.extractTop('goolge', choices, 2);
-List<ExtractedResult> results2 = FuzzySearch.extractTop(
+List<ExtractedResult> results = fuzz.FuzzySearch.extractTop('goolge', choices, 2);
+List<ExtractedResult> results2 = fuzz.FuzzySearch.extractTop(
   'newyork',
   moreChoices,
   3

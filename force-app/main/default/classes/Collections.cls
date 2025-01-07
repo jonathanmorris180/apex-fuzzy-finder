@@ -1,5 +1,5 @@
-public class Collections {
-  public static Integer max(Integer[] arr) {
+global class Collections {
+  global static Integer max(Integer[] arr) {
     Integer max = arr[0];
     for (Integer i = 1; i < arr.size(); i++) {
       if (arr[i] > max) {
@@ -9,7 +9,7 @@ public class Collections {
     return max;
   }
 
-  public static Double max(Double[] arr) {
+  global static Double max(Double[] arr) {
     Double max = arr[0];
     for (Integer i = 1; i < arr.size(); i++) {
       if (arr[i] > max) {
@@ -19,7 +19,7 @@ public class Collections {
     return max;
   }
 
-  public static List<Comparable> reverse(List<Comparable> l) {
+  global static List<Comparable> reverse(List<Comparable> l) {
     if (l == null || l.size() <= 1) {
       return l;
     }
@@ -31,7 +31,7 @@ public class Collections {
     return reversed;
   }
 
-  public static Comparable max(Comparable[] arr) {
+  global static Comparable max(Comparable[] arr) {
     Comparable max = arr[0];
     for (Integer i = 1; i < arr.size(); i++) {
       if (arr[i].compareTo(max) > 0) {
@@ -41,7 +41,7 @@ public class Collections {
     return max;
   }
 
-  public static Integer compare(Integer a, Integer b) {
+  global static Integer compare(Integer a, Integer b) {
     return a == b ? 0 : (a < b ? -1 : 1);
   }
 }
