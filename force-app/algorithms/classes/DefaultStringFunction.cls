@@ -1,4 +1,4 @@
-public class DefaultStringFunction implements ToStringFunction {
+global class DefaultStringFunction implements ToStringFunction {
   private final static String REGEX = '(?ui)\\W';
   private final static Pattern R = Pattern.compile(REGEX);
 
@@ -25,7 +25,7 @@ public class DefaultStringFunction implements ToStringFunction {
    * @param input Input string
    * @return The processed string
    */
-  public String apply(String input) {
+  global String apply(String input) {
     input = this.subNonAlphaNumeric(input, ' ');
     input = input.toLowerCase();
     input = input.trim();

@@ -4,8 +4,8 @@
  * so it is mostly non readable (eg. var names)
  */
 @SuppressWarnings('PMD')
-public class DiffUtils {
-  public static EditOp[] getEditOps(String s1, String s2) {
+global class DiffUtils {
+  global static EditOp[] getEditOps(String s1, String s2) {
     return getEditOps(s1.length(), s1, s2.length(), s2);
   }
 
@@ -215,7 +215,7 @@ public class DiffUtils {
     return ops;
   }
 
-  public static MatchingBlock[] getMatchingBlocks(String s1, String s2) {
+  global static MatchingBlock[] getMatchingBlocks(String s1, String s2) {
     return getMatchingBlocks(s1.length(), s2.length(), getEditOps(s1, s2));
   }
 
@@ -401,7 +401,7 @@ public class DiffUtils {
     return matchingBlocks;
   }
 
-  public static Integer levEditDistance(String s1, String s2, Integer xcost) {
+  global static Integer levEditDistance(String s1, String s2, Integer xcost) {
     Integer i;
     Integer half;
 
@@ -585,7 +585,7 @@ public class DiffUtils {
     return 0;
   }
 
-  public static Double getRatio(String s1, String s2) {
+  global static Double getRatio(String s1, String s2) {
     Integer len1 = s1.length();
     Integer len2 = s2.length();
     Integer lensum = len1 + len2;
@@ -598,6 +598,6 @@ public class DiffUtils {
     return (lensum - editDistance) / (Double) lensum;
   }
 
-  public class DiffUtilsException extends Exception {
+  global class DiffUtilsException extends Exception {
   }
 }

@@ -1,7 +1,7 @@
 /**
  * Interface for the different ratios
  */
-public interface Ratio extends Applicable {
+global interface Ratio extends Applicable {
   /**
    * Applies the ratio between the two strings
    *

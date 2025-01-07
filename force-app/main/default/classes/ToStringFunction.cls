@@ -3,7 +3,7 @@
  *
  * @param <T> The type of the item to transform.
  */
-public interface ToStringFunction {
+global interface ToStringFunction {
   /**
    * Transforms the input item to a string.
    *

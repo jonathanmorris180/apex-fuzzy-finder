@@ -1,7 +1,7 @@
 /**
  * Partial ratio of similarity
  */
-public class PartialRatio implements Ratio {
+global class PartialRatio implements Ratio {
   /**
    * Computes a partial ratio between the strings
    *
@@ -9,7 +9,7 @@ public class PartialRatio implements Ratio {
    * @param s2 Input string
    * @return The partial ratio
    */
-  public Integer apply(String s1, String s2) {
+  global Integer apply(String s1, String s2) {
     String shorter;
     String longer;
 
@@ -52,7 +52,7 @@ public class PartialRatio implements Ratio {
     return (Integer) Math.round(100 * Collections.max(scores));
   }
 
-  public Integer apply(String s1, String s2, ToStringFunction sp) {
+  global Integer apply(String s1, String s2, ToStringFunction sp) {
     return apply(sp.apply(s1), sp.apply(s2));
   }
 }

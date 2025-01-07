@@ -1,4 +1,4 @@
-public enum EditType {
+global enum EditType {
   DEL,
   EQUAL,
   INS,

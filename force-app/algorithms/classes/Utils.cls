@@ -1,10 +1,10 @@
-public class Utils {
+global class Utils {
   @testVisible
   private static List<String> tokenize(String input) {
     return input.split('\\s+');
   }
 
-  public static Set<String> tokenizeSet(String input) {
+  global static Set<String> tokenizeSet(String input) {
     return new Set<String>(tokenize(input));
   }
 
@@ -13,20 +13,20 @@ public class Utils {
    * When a space is used as the separator instead of the empty string,
    * TokenSetTest.itGetsTheTokenSetWithSimpleRatio fails
    */
-  public static String sortAndJoin(List<String> col, String sep) {
+  global static String sortAndJoin(List<String> col, String sep) {
     col.sort();
     return String.join(col, '');
   }
 
-  public static String sortAndJoin(Set<String> col, String sep) {
+  global static String sortAndJoin(Set<String> col, String sep) {
     return sortAndJoin(new List<String>(col), sep);
   }
 
-  public static Integer compare(Integer a, Integer b) {
+  global static Integer compare(Integer a, Integer b) {
     return a == b ? 0 : (a < b ? -1 : 1);
   }
 
-  public static List<Comparable> findTopKHeap(List<Comparable> arr, Integer k) {
+  global static List<Comparable> findTopKHeap(List<Comparable> arr, Integer k) {
     PriorityQueue pq = new PriorityQueue();
 
     for (Comparable x : arr) {

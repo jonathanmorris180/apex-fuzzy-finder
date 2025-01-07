@@ -4,7 +4,7 @@
 @SuppressWarnings(
   'PMD.ExcessiveClassLength, PMD.ExcessivePublicCount, PMD.CyclomaticComplexity'
 )
-public class FuzzySearch {
+global class FuzzySearch {
   /**
    * Calculates a Levenshtein simple ratio between the strings.
    * This is indicates a measure of similarity
@@ -13,7 +13,7 @@ public class FuzzySearch {
    * @param s2 Input string
    * @return The simple ratio
    */
-  public static Integer ratio(String s1, String s2) {
+  global static Integer ratio(String s1, String s2) {
     return new SimpleRatio().apply(s1, s2);
   }
 
@@ -27,7 +27,7 @@ public class FuzzySearch {
    *                        calculating the ratio
    * @return The simple ratio
    */
-  public static Integer ratio(
+  global static Integer ratio(
     String s1,
     String s2,
     ToStringFunction stringFunction
@@ -44,7 +44,7 @@ public class FuzzySearch {
    * @param s2 Input string
    * @return The partial ratio
    */
-  public static Integer partialRatio(String s1, String s2) {
+  global static Integer partialRatio(String s1, String s2) {
     return new PartialRatio().apply(s1, s2);
   }
 
@@ -59,7 +59,7 @@ public class FuzzySearch {
    *                        calculating the ratio
    * @return The partial ratio
    */
-  public static Integer partialRatio(
+  global static Integer partialRatio(
     String s1,
     String s2,
     ToStringFunction stringFunction
@@ -76,7 +76,7 @@ public class FuzzySearch {
    * @param s2 Input string
    * @return The partial ratio of the strings
    */
-  public static Integer tokenSortPartialRatio(String s1, String s2) {
+  global static Integer tokenSortPartialRatio(String s1, String s2) {
     return new TokenSort().apply(s1, s2, new PartialRatio());
   }
 
@@ -91,7 +91,7 @@ public class FuzzySearch {
    *                        calculating the ratio
    * @return The partial ratio of the strings
    */
-  public static Integer tokenSortPartialRatio(
+  global static Integer tokenSortPartialRatio(
     String s1,
     String s2,
     ToStringFunction stringFunction
@@ -108,7 +108,7 @@ public class FuzzySearch {
    * @param s2 Input string
    * @return The full ratio of the strings
    */
-  public static Integer tokenSortRatio(String s1, String s2) {
+  global static Integer tokenSortRatio(String s1, String s2) {
     return new TokenSort().apply(s1, s2, new SimpleRatio());
   }
 
@@ -123,7 +123,7 @@ public class FuzzySearch {
    *                        calculating the ratio
    * @return The full ratio of the strings
    */
-  public static Integer tokenSortRatio(
+  global static Integer tokenSortRatio(
     String s1,
     String s2,
     ToStringFunction stringFunction
@@ -141,7 +141,7 @@ public class FuzzySearch {
    * @param s2 Input string
    * @return The ratio of similarity
    */
-  public static Integer tokenSetRatio(String s1, String s2) {
+  global static Integer tokenSetRatio(String s1, String s2) {
     return new TokenSet().apply(s1, s2, new SimpleRatio());
   }
 
@@ -157,7 +157,7 @@ public class FuzzySearch {
    *                        calculating the ratio
    * @return The ratio of similarity
    */
-  public static Integer tokenSetRatio(
+  global static Integer tokenSetRatio(
     String s1,
     String s2,
     ToStringFunction stringFunction
@@ -175,7 +175,7 @@ public class FuzzySearch {
    * @param s2 Input string
    * @return The ratio of similarity
    */
-  public static Integer tokenSetPartialRatio(String s1, String s2) {
+  global static Integer tokenSetPartialRatio(String s1, String s2) {
     return new TokenSet().apply(s1, s2, new PartialRatio());
   }
 
@@ -191,7 +191,7 @@ public class FuzzySearch {
    *                        calculating the ratio
    * @return The ratio of similarity
    */
-  public static Integer tokenSetPartialRatio(
+  global static Integer tokenSetPartialRatio(
     String s1,
     String s2,
     ToStringFunction stringFunction
@@ -206,7 +206,7 @@ public class FuzzySearch {
    * @param s2 Input string
    * @return The ratio of similarity
    */
-  public static Integer weightedRatio(String s1, String s2) {
+  global static Integer weightedRatio(String s1, String s2) {
     return new WeightedRatio().apply(s1, s2);
   }
 
@@ -219,7 +219,7 @@ public class FuzzySearch {
    *                        calculating the ratio
    * @return The ratio of similarity
    */
-  public static Integer weightedRatio(
+  global static Integer weightedRatio(
     String s1,
     String s2,
     ToStringFunction stringFunction
@@ -236,7 +236,7 @@ public class FuzzySearch {
    * @param func    The scoring function
    * @return A list of the results
    */
-  public static List<ExtractedResult> extractTop(
+  global static List<ExtractedResult> extractTop(
     String query,
     List<String> choices,
     Applicable func,
@@ -247,7 +247,7 @@ public class FuzzySearch {
     return extractor.extractTop(query, choices, func, numChoices);
   }
 
-  public static List<ExtractedResult> extractTop(
+  global static List<ExtractedResult> extractTop(
     String query,
     Set<String> choices,
     Applicable func,
@@ -269,7 +269,7 @@ public class FuzzySearch {
    * @param cutoff  Rejects any entries with score below this
    * @return A list of the results
    */
-  public static List<ExtractedResult> extractTop(
+  global static List<ExtractedResult> extractTop(
     String query,
     List<String> choices,
     Integer numChoices,
@@ -284,7 +284,7 @@ public class FuzzySearch {
     );
   }
 
-  public static List<ExtractedResult> extractTop(
+  global static List<ExtractedResult> extractTop(
     String query,
     Set<String> choices,
     Integer numChoices,
@@ -309,7 +309,7 @@ public class FuzzySearch {
    * @param limit   The number of results to return
    * @return A list of the results
    */
-  public static List<ExtractedResult> extractTop(
+  global static List<ExtractedResult> extractTop(
     String query,
     List<String> choices,
     Applicable func,
@@ -319,7 +319,7 @@ public class FuzzySearch {
     return extractor.extractTop(query, choices, func, numChoices);
   }
 
-  public static List<ExtractedResult> extractTop(
+  global static List<ExtractedResult> extractTop(
     String query,
     Set<String> choices,
     Applicable func,
@@ -338,7 +338,7 @@ public class FuzzySearch {
    * @param limit   The number of results to return
    * @return A list of the results
    */
-  public static List<ExtractedResult> extractTop(
+  global static List<ExtractedResult> extractTop(
     String query,
     List<String> choices,
     Integer numChoices
@@ -352,7 +352,7 @@ public class FuzzySearch {
     );
   }
 
-  public static List<ExtractedResult> extractTop(
+  global static List<ExtractedResult> extractTop(
     String query,
     Set<String> choices,
     Integer numChoices
@@ -375,7 +375,7 @@ public class FuzzySearch {
    * @param func    The scoring function
    * @return A list of the results
    */
-  public static List<ExtractedResult> extractSorted(
+  global static List<ExtractedResult> extractSorted(
     String query,
     List<String> choices,
     Applicable func
@@ -384,7 +384,7 @@ public class FuzzySearch {
     return extractor.extractTop(query, choices, func);
   }
 
-  public static List<ExtractedResult> extractSorted(
+  global static List<ExtractedResult> extractSorted(
     String query,
     Set<String> choices,
     Applicable func
@@ -403,7 +403,7 @@ public class FuzzySearch {
    * @param cutoff  Keep only scores above cutoff
    * @return A list of the results
    */
-  public static List<ExtractedResult> extractSorted(
+  global static List<ExtractedResult> extractSorted(
     String query,
     List<String> choices,
     Applicable func,
@@ -413,7 +413,7 @@ public class FuzzySearch {
     return extractor.extractTop(query, choices, func);
   }
 
-  public static List<ExtractedResult> extractSorted(
+  global static List<ExtractedResult> extractSorted(
     String query,
     Set<String> choices,
     Applicable func,
@@ -431,7 +431,7 @@ public class FuzzySearch {
    * @param choices A list of choices
    * @return A list of the results
    */
-  public static List<ExtractedResult> extractSorted(
+  global static List<ExtractedResult> extractSorted(
     String query,
     List<String> choices
   ) {
@@ -439,7 +439,7 @@ public class FuzzySearch {
     return extractor.extractTop(query, choices, new WeightedRatio());
   }
 
-  public static List<ExtractedResult> extractSorted(
+  global static List<ExtractedResult> extractSorted(
     String query,
     Set<String> choices
   ) {
@@ -456,7 +456,7 @@ public class FuzzySearch {
    * @param cutoff  Keep only scores above cutoff
    * @return A list of the results
    */
-  public static List<ExtractedResult> extractSorted(
+  global static List<ExtractedResult> extractSorted(
     String query,
     List<String> choices,
     Integer cutoff
@@ -465,7 +465,7 @@ public class FuzzySearch {
     return extractor.extractTop(query, choices, new WeightedRatio());
   }
 
-  public static List<ExtractedResult> extractSorted(
+  global static List<ExtractedResult> extractSorted(
     String query,
     Set<String> choices,
     Integer cutoff
@@ -483,7 +483,7 @@ public class FuzzySearch {
    * @param func    The scoring function
    * @return A list of the results
    */
-  public static List<ExtractedResult> extractAll(
+  global static List<ExtractedResult> extractAll(
     String query,
     List<String> choices,
     Applicable func
@@ -493,7 +493,7 @@ public class FuzzySearch {
     return extractor.extractWithoutOrder(query, choices, func);
   }
 
-  public static List<ExtractedResult> extractAll(
+  global static List<ExtractedResult> extractAll(
     String query,
     Set<String> choices,
     Applicable func
@@ -513,7 +513,7 @@ public class FuzzySearch {
    * @param cutoff  Keep only scores above cutoff
    * @return A list of the results
    */
-  public static List<ExtractedResult> extractAll(
+  global static List<ExtractedResult> extractAll(
     String query,
     List<String> choices,
     Applicable func,
@@ -523,7 +523,7 @@ public class FuzzySearch {
     return extractor.extractWithoutOrder(query, choices, func);
   }
 
-  public static List<ExtractedResult> extractAll(
+  global static List<ExtractedResult> extractAll(
     String query,
     Set<String> choices,
     Applicable func,
@@ -541,7 +541,7 @@ public class FuzzySearch {
    * @param choices A list of choices
    * @return A list of the results
    */
-  public static List<ExtractedResult> extractAll(
+  global static List<ExtractedResult> extractAll(
     String query,
     List<String> choices
   ) {
@@ -549,7 +549,7 @@ public class FuzzySearch {
     return extractor.extractWithoutOrder(query, choices, new WeightedRatio());
   }
 
-  public static List<ExtractedResult> extractAll(
+  global static List<ExtractedResult> extractAll(
     String query,
     Set<String> choices
   ) {
@@ -566,7 +566,7 @@ public class FuzzySearch {
    * @param cutoff  Keep only scores above cutoff
    * @return A list of the results
    */
-  public static List<ExtractedResult> extractAll(
+  global static List<ExtractedResult> extractAll(
     String query,
     List<String> choices,
     Integer cutoff
@@ -575,7 +575,7 @@ public class FuzzySearch {
     return extractor.extractWithoutOrder(query, choices, new WeightedRatio());
   }
 
-  public static List<ExtractedResult> extractAll(
+  global static List<ExtractedResult> extractAll(
     String query,
     Set<String> choices,
     Integer cutoff
@@ -592,7 +592,7 @@ public class FuzzySearch {
    * @param func    Scoring function
    * @return An object containing the best match and it's score
    */
-  public static ExtractedResult extractOne(
+  global static ExtractedResult extractOne(
     String query,
     List<String> choices,
     Applicable func
@@ -601,7 +601,7 @@ public class FuzzySearch {
     return extractor.extractOne(query, choices, func);
   }
 
-  public static ExtractedResult extractOne(
+  global static ExtractedResult extractOne(
     String query,
     Set<String> choices,
     Applicable func
@@ -617,12 +617,12 @@ public class FuzzySearch {
    * @param choices A list of choices
    * @return An object containing the best match and it's score
    */
-  public static ExtractedResult extractOne(String query, List<String> choices) {
+  global static ExtractedResult extractOne(String query, List<String> choices) {
     Extractor extractor = new Extractor();
     return extractor.extractOne(query, choices, new WeightedRatio());
   }
 
-  public static ExtractedResult extractOne(String query, Set<String> choices) {
+  global static ExtractedResult extractOne(String query, Set<String> choices) {
     Extractor extractor = new Extractor();
     return extractor.extractOne(query, choices, new WeightedRatio());
   }
@@ -637,7 +637,7 @@ public class FuzzySearch {
    * @param func    The scoring function
    * @return A list of the results
    */
-  public static List<BoundExtractedResult> extractTop(
+  global static List<BoundExtractedResult> extractTop(
     String query,
     List<String> choices,
     ToStringFunction toStringFunction,
@@ -655,7 +655,7 @@ public class FuzzySearch {
     );
   }
 
-  public static List<BoundExtractedResult> extractTop(
+  global static List<BoundExtractedResult> extractTop(
     String query,
     Set<String> choices,
     ToStringFunction toStringFunction,
@@ -685,7 +685,7 @@ public class FuzzySearch {
    * @param cutoff  Rejects any entries with score below this
    * @return A list of the results
    */
-  public static List<BoundExtractedResult> extractTop(
+  global static List<BoundExtractedResult> extractTop(
     String query,
     List<String> choices,
     ToStringFunction toStringFunction,
@@ -702,7 +702,7 @@ public class FuzzySearch {
     );
   }
 
-  public static List<BoundExtractedResult> extractTop(
+  global static List<BoundExtractedResult> extractTop(
     String query,
     Set<String> choices,
     ToStringFunction toStringFunction,
@@ -730,7 +730,7 @@ public class FuzzySearch {
    * @param limit   The number of results to return
    * @return A list of the results
    */
-  public static List<BoundExtractedResult> extractTop(
+  global static List<BoundExtractedResult> extractTop(
     String query,
     List<String> choices,
     ToStringFunction toStringFunction,
@@ -747,7 +747,7 @@ public class FuzzySearch {
     );
   }
 
-  public static List<BoundExtractedResult> extractTop(
+  global static List<BoundExtractedResult> extractTop(
     String query,
     Set<String> choices,
     ToStringFunction toStringFunction,
@@ -774,7 +774,7 @@ public class FuzzySearch {
    * @param limit   The number of results to return
    * @return A list of the results
    */
-  public static List<BoundExtractedResult> extractTop(
+  global static List<BoundExtractedResult> extractTop(
     String query,
     List<String> choices,
     ToStringFunction toStringFunction,
@@ -790,7 +790,7 @@ public class FuzzySearch {
     );
   }
 
-  public static List<BoundExtractedResult> extractTop(
+  global static List<BoundExtractedResult> extractTop(
     String query,
     Set<String> choices,
     ToStringFunction toStringFunction,
@@ -816,7 +816,7 @@ public class FuzzySearch {
    * @param func    The scoring function
    * @return A list of the results
    */
-  public static List<BoundExtractedResult> extractSorted(
+  global static List<BoundExtractedResult> extractSorted(
     String query,
     List<String> choices,
     ToStringFunction toStringFunction,
@@ -826,7 +826,7 @@ public class FuzzySearch {
     return extractor.extractTop(query, choices, toStringFunction, func);
   }
 
-  public static List<BoundExtractedResult> extractSorted(
+  global static List<BoundExtractedResult> extractSorted(
     String query,
     Set<String> choices,
     ToStringFunction toStringFunction,
@@ -847,7 +847,7 @@ public class FuzzySearch {
    * @param cutoff  Keep only scores above cutoff
    * @return A list of the results
    */
-  public static List<BoundExtractedResult> extractSorted(
+  global static List<BoundExtractedResult> extractSorted(
     String query,
     List<String> choices,
     ToStringFunction toStringFunction,
@@ -858,7 +858,7 @@ public class FuzzySearch {
     return extractor.extractTop(query, choices, toStringFunction, func);
   }
 
-  public static List<BoundExtractedResult> extractSorted(
+  global static List<BoundExtractedResult> extractSorted(
     String query,
     Set<String> choices,
     ToStringFunction toStringFunction,
@@ -878,7 +878,7 @@ public class FuzzySearch {
    * @param toStringFunction The ToStringFunction to be applied to all choices.
    * @return A list of the results
    */
-  public static List<BoundExtractedResult> extractSorted(
+  global static List<BoundExtractedResult> extractSorted(
     String query,
     List<String> choices,
     ToStringFunction toStringFunction
@@ -892,7 +892,7 @@ public class FuzzySearch {
     );
   }
 
-  public static List<BoundExtractedResult> extractSorted(
+  global static List<BoundExtractedResult> extractSorted(
     String query,
     Set<String> choices,
     ToStringFunction toStringFunction
@@ -916,7 +916,7 @@ public class FuzzySearch {
    * @param cutoff  Keep only scores above cutoff
    * @return A list of the results
    */
-  public static List<BoundExtractedResult> extractSorted(
+  global static List<BoundExtractedResult> extractSorted(
     String query,
     List<String> choices,
     ToStringFunction toStringFunction,
@@ -931,7 +931,7 @@ public class FuzzySearch {
     );
   }
 
-  public static List<BoundExtractedResult> extractSorted(
+  global static List<BoundExtractedResult> extractSorted(
     String query,
     Set<String> choices,
     ToStringFunction toStringFunction,
@@ -956,7 +956,7 @@ public class FuzzySearch {
    * @param func    The scoring function
    * @return A list of the results
    */
-  public static List<BoundExtractedResult> extractAll(
+  global static List<BoundExtractedResult> extractAll(
     String query,
     List<String> choices,
     ToStringFunction toStringFunction,
@@ -971,7 +971,7 @@ public class FuzzySearch {
     );
   }
 
-  public static List<BoundExtractedResult> extractAll(
+  global static List<BoundExtractedResult> extractAll(
     String query,
     Set<String> choices,
     ToStringFunction toStringFunction,
@@ -997,7 +997,7 @@ public class FuzzySearch {
    * @param cutoff  Keep only scores above cutoff
    * @return A list of the results
    */
-  public static List<BoundExtractedResult> extractAll(
+  global static List<BoundExtractedResult> extractAll(
     String query,
     List<String> choices,
     ToStringFunction toStringFunction,
@@ -1013,7 +1013,7 @@ public class FuzzySearch {
     );
   }
 
-  public static List<BoundExtractedResult> extractAll(
+  global static List<BoundExtractedResult> extractAll(
     String query,
     Set<String> choices,
     ToStringFunction toStringFunction,
@@ -1038,7 +1038,7 @@ public class FuzzySearch {
    * @param toStringFunction The ToStringFunction to be applied to all choices.
    * @return A list of the results
    */
-  public static List<BoundExtractedResult> extractAll(
+  global static List<BoundExtractedResult> extractAll(
     String query,
     List<String> choices,
     ToStringFunction toStringFunction
@@ -1052,7 +1052,7 @@ public class FuzzySearch {
     );
   }
 
-  public static List<BoundExtractedResult> extractAll(
+  global static List<BoundExtractedResult> extractAll(
     String query,
     Set<String> choices,
     ToStringFunction toStringFunction
@@ -1076,7 +1076,7 @@ public class FuzzySearch {
    * @param cutoff  Keep only scores above cutoff
    * @return A list of the results
    */
-  public static List<BoundExtractedResult> extractAll(
+  global static List<BoundExtractedResult> extractAll(
     String query,
     List<String> choices,
     ToStringFunction toStringFunction,
@@ -1091,7 +1091,7 @@ public class FuzzySearch {
     );
   }
 
-  public static List<BoundExtractedResult> extractAll(
+  global static List<BoundExtractedResult> extractAll(
     String query,
     Set<String> choices,
     ToStringFunction toStringFunction,
@@ -1115,7 +1115,7 @@ public class FuzzySearch {
    * @param func    Scoring function
    * @return An object containing the best match and it's score
    */
-  public static BoundExtractedResult extractOne(
+  global static BoundExtractedResult extractOne(
     String query,
     List<String> choices,
     ToStringFunction toStringFunction,
@@ -1125,7 +1125,7 @@ public class FuzzySearch {
     return extractor.extractOne(query, choices, toStringFunction, func);
   }
 
-  public static BoundExtractedResult extractOne(
+  global static BoundExtractedResult extractOne(
     String query,
     Set<String> choices,
     ToStringFunction toStringFunction,
@@ -1143,7 +1143,7 @@ public class FuzzySearch {
    * @param toStringFunction The ToStringFunction to be applied to all choices.
    * @return An object containing the best match and it's score
    */
-  public static BoundExtractedResult extractOne(
+  global static BoundExtractedResult extractOne(
     String query,
     List<String> choices,
     ToStringFunction toStringFunction
@@ -1157,7 +1157,7 @@ public class FuzzySearch {
     );
   }
 
-  public static BoundExtractedResult extractOne(
+  global static BoundExtractedResult extractOne(
     String query,
     Set<String> choices,
     ToStringFunction toStringFunction

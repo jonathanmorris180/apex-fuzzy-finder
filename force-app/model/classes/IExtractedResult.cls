@@ -1,4 +1,4 @@
-public interface IExtractedResult {
+global interface IExtractedResult {
   String getString();
   void setString(String str);
   Integer getScore();

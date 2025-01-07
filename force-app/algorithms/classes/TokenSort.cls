@@ -1,7 +1,7 @@
-public class TokenSort extends RatioAlgorithm {
+global class TokenSort extends RatioAlgorithm {
   private static final Logger LOGGER = LoggerFactory.getLogger(TokenSort.class);
 
-  public override Integer apply(
+  global override Integer apply(
     String s1,
     String s2,
     Ratio ratio,

@@ -1,15 +1,15 @@
-public class Extractor {
+global class Extractor {
   private Integer cutoff;
 
-  public Extractor() {
+  global Extractor() {
     this.cutoff = 0;
   }
 
-  public Extractor(Integer cutoff) {
+  global Extractor(Integer cutoff) {
     this.cutoff = cutoff;
   }
 
-  public Extractor with(Integer cutoff) {
+  global Extractor with(Integer cutoff) {
     this.setCutoff(cutoff);
     return this;
   }
@@ -23,7 +23,7 @@ public class Extractor {
    * @param func The function to apply
    * @return The list of results
    */
-  public List<ExtractedResult> extractWithoutOrder(
+  global List<ExtractedResult> extractWithoutOrder(
     String query,
     List<String> choices,
     Applicable func
@@ -43,7 +43,7 @@ public class Extractor {
     return yields;
   }
 
-  public List<ExtractedResult> extractWithoutOrder(
+  global List<ExtractedResult> extractWithoutOrder(
     String query,
     Set<String> choices,
     Applicable func
@@ -73,7 +73,7 @@ public class Extractor {
    * @param func The function to apply
    * @return The list of results
    */
-  public List<BoundExtractedResult> extractWithoutOrder(
+  global List<BoundExtractedResult> extractWithoutOrder(
     String query,
     List<String> choices,
     ToStringFunction toStringFunction,
@@ -95,7 +95,7 @@ public class Extractor {
     return yields;
   }
 
-  public List<BoundExtractedResult> extractWithoutOrder(
+  global List<BoundExtractedResult> extractWithoutOrder(
     String query,
     Set<String> choices,
     ToStringFunction toStringFunction,
@@ -125,7 +125,7 @@ public class Extractor {
    * @param func   Scoring function
    * @return An object containing the best match and it's score
    */
-  public ExtractedResult extractOne(
+  global ExtractedResult extractOne(
     String query,
     List<String> choices,
     Applicable func
@@ -135,7 +135,7 @@ public class Extractor {
     return (ExtractedResult) Collections.max(extracted);
   }
 
-  public ExtractedResult extractOne(
+  global ExtractedResult extractOne(
     String query,
     Set<String> choices,
     Applicable func
@@ -154,7 +154,7 @@ public class Extractor {
    * @param func   Scoring function
    * @return An object containing the best match and it's score
    */
-  public BoundExtractedResult extractOne(
+  global BoundExtractedResult extractOne(
     String query,
     List<String> choices,
     ToStringFunction toStringFunction,
@@ -170,7 +170,7 @@ public class Extractor {
     return (BoundExtractedResult) Collections.max(extracted);
   }
 
-  public BoundExtractedResult extractOne(
+  global BoundExtractedResult extractOne(
     String query,
     Set<String> choices,
     ToStringFunction toStringFunction,
@@ -195,7 +195,7 @@ public class Extractor {
    * @param func    The scoring function
    * @return A list of the results
    */
-  public List<ExtractedResult> extractTop(
+  global List<ExtractedResult> extractTop(
     String query,
     List<String> choices,
     Applicable func
@@ -207,7 +207,7 @@ public class Extractor {
     return best;
   }
 
-  public List<ExtractedResult> extractTop(
+  global List<ExtractedResult> extractTop(
     String query,
     Set<String> choices,
     Applicable func
@@ -229,7 +229,7 @@ public class Extractor {
    * @param func    The scoring function
    * @return A list of the results
    */
-  public List<BoundExtractedResult> extractTop(
+  global List<BoundExtractedResult> extractTop(
     String query,
     List<String> choices,
     ToStringFunction toStringFunction,
@@ -247,7 +247,7 @@ public class Extractor {
     return best;
   }
 
-  public List<BoundExtractedResult> extractTop(
+  global List<BoundExtractedResult> extractTop(
     String query,
     Set<String> choices,
     ToStringFunction toStringFunction,
@@ -275,7 +275,7 @@ public class Extractor {
    *                the search (k-top heap sort) is used
    * @return A list of the results
    */
-  public List<ExtractedResult> extractTop(
+  global List<ExtractedResult> extractTop(
     String query,
     List<String> choices,
     Applicable func,
@@ -291,7 +291,7 @@ public class Extractor {
     return results;
   }
 
-  public List<ExtractedResult> extractTop(
+  global List<ExtractedResult> extractTop(
     String query,
     Set<String> choices,
     Applicable func,
@@ -340,7 +340,7 @@ public class Extractor {
    *                the search (k-top heap sort) is used
    * @return A list of the results
    */
-  public List<BoundExtractedResult> extractTop(
+  global List<BoundExtractedResult> extractTop(
     String query,
     List<String> choices,
     ToStringFunction toStringFunction,
@@ -362,7 +362,7 @@ public class Extractor {
     return results;
   }
 
-  public List<BoundExtractedResult> extractTop(
+  global List<BoundExtractedResult> extractTop(
     String query,
     Set<String> choices,
     ToStringFunction toStringFunction,
@@ -384,11 +384,11 @@ public class Extractor {
     return results;
   }
 
-  public Integer getCutoff() {
+  global Integer getCutoff() {
     return cutoff;
   }
 
-  public void setCutoff(Integer cutoff) {
+  global void setCutoff(Integer cutoff) {
     this.cutoff = cutoff;
   }
 }

@@ -1,4 +1,4 @@
-public without sharing class Logger {
+global without sharing class Logger {
   private Type type;
   private static Log__c log = new Log__c(Message__c = '');
   private static Boolean enabled = false;
@@ -12,7 +12,7 @@ public without sharing class Logger {
     FATAL
   }
 
-  public Logger(Type type) {
+  global Logger(Type type) {
     this.type = type;
     this.init();
   }
@@ -38,35 +38,35 @@ public without sharing class Logger {
     );
   }
 
-  public void enable() {
+  global void enable() {
     enabled = true;
   }
 
-  public void disable() {
+  global void disable() {
     enabled = false;
   }
 
-  public void info(String message) {
+  global void info(String message) {
     this.log(Severity.INFO, message);
   }
 
-  public void error(String message) {
+  global void error(String message) {
     this.log(Severity.ERROR, message);
   }
 
-  public void debug(String message) {
+  global void debug(String message) {
     this.log(Severity.DEBUG, message);
   }
 
-  public void warn(String message) {
+  global void warn(String message) {
     this.log(Severity.WARN, message);
   }
 
-  public void fatal(String message) {
+  global void fatal(String message) {
     this.log(Severity.FATAL, message);
   }
 
-  public void save() {
+  global void save() {
     if (!enabled) {
       return;
     }
