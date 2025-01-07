@@ -3,6 +3,6 @@ List<String> oppNames = new List<String>{
 };
 
 System.debug('Before: ' + System.now());
-List<ExtractedResult> results = FuzzySearch.extractSorted('Ad Credit', oppNames, 90);
+List<ExtractedResult> results = fuzz.FuzzySearch.extractSorted('Ad Credit', oppNames, 90);
 System.debug('results: ' + results);
 System.debug('After: ' + System.now());
